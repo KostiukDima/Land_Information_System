@@ -55,10 +55,17 @@
   <ItemGroup>
     <Compile Include="DALClass.cs" />
     <Compile Include="LandSystemDBModel.cs" />
+    <Compile Include="Models\ExploitationType.cs" />
     <Compile Include="Models\LandCategory.cs" />
     <Compile Include="Models\LandLot.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Owner.cs" />
+    <Compile Include="Models\OwnershipType.cs" />
     <Compile Include="Models\Purpose.cs" />
+    <Compile Include="Models\Soil.cs" />
+    <Compile Include="Models\StateRegistrationInfo.cs" />
+    <Compile Include="Models\Сhanging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

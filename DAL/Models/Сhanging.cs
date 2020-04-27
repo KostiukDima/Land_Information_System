@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    class Purpose
+    class Сhanging
     {
         public int Id { get; set; }
-        public string Code { get; set; }
-        public string Name { get; set; }
+        public string Description { get; set; }
         // Navigation properties
-        public virtual ICollection<LandLot> LandLots { get; set; }
-
+        public virtual LandLot LandLots { get; set; }
     }
 }
