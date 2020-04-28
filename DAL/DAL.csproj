@@ -59,6 +59,7 @@
     <Compile Include="Models\LandCategory.cs" />
     <Compile Include="Models\LandLot.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\MonetaryValuation.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Owner.cs" />
     <Compile Include="Models\OwnershipType.cs" />
