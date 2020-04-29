@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    class Owner
+    class JuridicalIndividual
     {
-        public int Id { get; set; }
-
-        
-
-
     }
 }
