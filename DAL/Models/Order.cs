@@ -10,7 +10,11 @@ namespace DAL.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        // Foreign key
+        public int LandLotId { get; set; }
+
         // Navigation properties
-        public virtual LandLot LandLots { get; set; }
+        public virtual LandLot LandLot { get; set; }
     }
 }

@@ -53,6 +53,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configs\ExploitationTypeConfig.cs" />
+    <Compile Include="Configs\JuridicalIndividualConfig.cs" />
+    <Compile Include="Configs\LandCategoryConfig.cs" />
+    <Compile Include="Configs\LandLotConfig.cs" />
+    <Compile Include="Configs\LocationConfig.cs" />
+    <Compile Include="Configs\MonetaryValuationConfig.cs" />
+    <Compile Include="Configs\OrderConfig.cs" />
+    <Compile Include="Configs\OwnerConfigs.cs" />
     <Compile Include="DALClass.cs" />
     <Compile Include="LandSystemDBModel.cs" />
     <Compile Include="Models\ExploitationType.cs" />

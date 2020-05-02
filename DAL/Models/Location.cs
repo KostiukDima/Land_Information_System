@@ -14,6 +14,9 @@ namespace DAL.Models
         public string Settlement { get; set; }
         public string Street { get; set; }
 
+        // Foreign key
+        public int LandLotId { get; set; }
+
         // Navigation properties
         public virtual LandLot LandLot { get; set; }
     }

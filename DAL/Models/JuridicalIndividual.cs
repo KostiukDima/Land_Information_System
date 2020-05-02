@@ -8,5 +8,10 @@ namespace DAL.Models
 {
     class JuridicalIndividual
     {
+        public int Id { get; set; }
+        public string Name { get; set; }        
+        public int EDRPOUcode { get; set; }
+        // Navigation properties
+        public virtual ICollection<Owner> Owners { get; set; }
     }
 }
