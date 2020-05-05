@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Configs
 {
-    class MonetaryValuationConfig : EntityTypeConfiguration<MonetaryValuation>
+    public class MonetaryValuationConfig : EntityTypeConfiguration<MonetaryValuation>
     {
         public MonetaryValuationConfig()
         {

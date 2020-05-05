@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    class MonetaryValuation
+    public class MonetaryValuation
     {
         public int Id { get; set; }
         public double Km { get; set; }

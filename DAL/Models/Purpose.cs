@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    class Purpose
+    public class Purpose
     {
         public int Id { get; set; }
         public string Code { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Configs
 {
-    class LocationConfig : EntityTypeConfiguration<Location>
+    public class LocationConfig : EntityTypeConfiguration<Location>
     {
         public LocationConfig()
         {

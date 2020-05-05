@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    class Сhanging
+    public class Changing
     {
         public int Id { get; set; }
         public string Description { get; set; }
+
+        // Foreign key
+        public int LandLotId { get; set; }
         // Navigation properties
-        public virtual LandLot LandLots { get; set; }
+        public virtual LandLot LandLot { get; set; }
     }
 }

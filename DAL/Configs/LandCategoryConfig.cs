@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Configs
 {
-    class LandCategoryConfig : EntityTypeConfiguration<LandCategory>
+    public class LandCategoryConfig : EntityTypeConfiguration<LandCategory>
     {
         public LandCategoryConfig()
         {

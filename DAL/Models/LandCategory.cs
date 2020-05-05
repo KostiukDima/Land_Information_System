@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    class LandCategory
+    public class LandCategory
     {
         public int Id { get; set; }
         public string Name { get; set; }

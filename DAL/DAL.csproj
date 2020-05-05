@@ -60,8 +60,15 @@
     <Compile Include="Configs\LocationConfig.cs" />
     <Compile Include="Configs\MonetaryValuationConfig.cs" />
     <Compile Include="Configs\OrderConfig.cs" />
-    <Compile Include="Configs\OwnerConfigs.cs" />
+    <Compile Include="Configs\OwnerConfig.cs" />
+    <Compile Include="Configs\OwnershipTypeConfig.cs" />
+    <Compile Include="Configs\PhysicalIndividualConfig.cs" />
+    <Compile Include="Configs\PurposeConfig.cs" />
+    <Compile Include="Configs\SoilConfig.cs" />
+    <Compile Include="Configs\StateRegistrationInfoConfig.cs" />
+    <Compile Include="Configs\ChangingConfig.cs" />
     <Compile Include="DALClass.cs" />
+    <Compile Include="DBInitializer.cs" />
     <Compile Include="LandSystemDBModel.cs" />
     <Compile Include="Models\ExploitationType.cs" />
     <Compile Include="Models\JuridicalIndividual.cs" />
@@ -76,7 +83,7 @@
     <Compile Include="Models\Purpose.cs" />
     <Compile Include="Models\Soil.cs" />
     <Compile Include="Models\StateRegistrationInfo.cs" />
-    <Compile Include="Models\Сhanging.cs" />
+    <Compile Include="Models\Changing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

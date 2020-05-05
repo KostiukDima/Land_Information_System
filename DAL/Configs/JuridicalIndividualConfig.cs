@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace DAL.Configs
 {
-    class JuridicalIndividualConfig : EntityTypeConfiguration<JuridicalIndividual>
+    public class JuridicalIndividualConfig : EntityTypeConfiguration<JuridicalIndividual>
     {
         public JuridicalIndividualConfig()
         {
             Property(j => j.Name).IsRequired();
             Property(j => j.EDRPOUcode).IsRequired();
 
-            HasMany<Owner>(j => j.Owners).WithRequired(o => o.JuridicalIndividual).HasForeignKey(o => o.JuridicalIndividualId);
+            //HasMany<Owner>(j => j.Owners).WithRequired(o => o.JuridicalIndividual).HasForeignKey(o => o.JuridicalIndividualId);
         }
     }
 }

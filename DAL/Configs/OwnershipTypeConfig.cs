@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace DAL.Configs
 {
-    public class OrderConfig : EntityTypeConfiguration<Order>
+    public class OwnershipTypeConfig : EntityTypeConfiguration<OwnershipType>
     {
-        public OrderConfig()
+        public OwnershipTypeConfig()
         {
             Property(o => o.Name).IsRequired();
 
-            HasRequired<LandLot>(o => o.LandLot).WithMany(ll => ll.Order).HasForeignKey(o=>o.LandLotId);
+            HasMany<LandLot>(o => o.LandLots).WithRequired(ll => ll.OwnershipType).HasForeignKey(l => l.OwnershipTypeId);
 
         }
     }

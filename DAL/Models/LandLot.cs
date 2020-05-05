@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    class LandLot
+    public class LandLot
     {
         // Primary key
         public int Id { get; set; }
@@ -33,7 +33,7 @@ namespace DAL.Models
         public virtual Soil Soil { get; set; }
         public virtual Owner Owner  { get; set; }
         public virtual ICollection<Order> Order { get; set; }
-        public virtual ICollection<Сhanging>  Сhangings { get; set; }
+        public virtual ICollection<Changing>  Сhangings { get; set; }
 
 
     }

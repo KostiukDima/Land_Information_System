@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    class Location
+    public class Location
     {
         public int Id { get; set; }
         public string Region { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Configs
 {
-    class LandLotConfig : EntityTypeConfiguration<LandLot>
+    public class LandLotConfig : EntityTypeConfiguration<LandLot>
     {
         public LandLotConfig()
         {

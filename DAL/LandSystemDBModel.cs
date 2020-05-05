@@ -1,31 +1,58 @@
 namespace DAL
 {
+    using DAL.Models;
+    using DAL.Configs;
     using System;
     using System.Data.Entity;
     using System.Linq;
+    using System.Data.Entity.ModelConfiguration.Conventions;
 
     public class LandSystemDBModel : DbContext
     {
-        // Your context has been configured to use a 'LandSystemDBModel' connection string from your application's 
-        // configuration file (App.config or Web.config). By default, this connection string targets the 
-        // 'DAL.LandSystemDBModel' database on your LocalDb instance. 
-        // 
-        // If you wish to target a different database and/or database provider, modify the 'LandSystemDBModel' 
-        // connection string in the application configuration file.
+
         public LandSystemDBModel()
             : base("name=LandSystemDBModel")
         {
+            Database.SetInitializer(new DBInitializer());
         }
 
-        // Add a DbSet for each entity type that you want to include in your model. For more information 
-        // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-        // public virtual DbSet<MyEntity> MyEntities { get; set; }
+            modelBuilder.Configurations.Add(new ExploitationTypeConfig());
+            modelBuilder.Configurations.Add(new JuridicalIndividualConfig());
+            modelBuilder.Configurations.Add(new LandCategoryConfig());
+            modelBuilder.Configurations.Add(new LandCategoryConfig());
+            modelBuilder.Configurations.Add(new LocationConfig());
+            modelBuilder.Configurations.Add(new MonetaryValuationConfig());
+            modelBuilder.Configurations.Add(new OrderConfig());
+            modelBuilder.Configurations.Add(new OwnerConfig());
+            modelBuilder.Configurations.Add(new OwnershipTypeConfig());
+            modelBuilder.Configurations.Add(new PhysicalIndividualConfig());
+            modelBuilder.Configurations.Add(new PurposeConfig());
+            modelBuilder.Configurations.Add(new SoilConfig());
+            modelBuilder.Configurations.Add(new ChangingConfig());
+            modelBuilder.Configurations.Add(new StateRegistrationInfoConfig());
+
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        }
+
+        public virtual DbSet<ExploitationType> ExploitationTypes { get; set; }
+        public virtual DbSet<JuridicalIndividual>  JuridicalIndividuals{ get; set; }
+        public virtual DbSet<LandCategory> LandCategories { get; set; }
+        public virtual DbSet<LandLot> LandLots { get; set; }
+        public virtual DbSet<Location>  Locations{ get; set; }
+        public virtual DbSet<MonetaryValuation>  MonetaryValuations{ get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Owner> Owners { get; set; }
+        public virtual DbSet<OwnershipType> OwnershipTypes { get; set; }
+        public virtual DbSet<PhysicalIndividual>  PhysicalIndividuals{ get; set; }
+        public virtual DbSet<Purpose> Purposes { get; set; }
+        public virtual DbSet<Soil>  Soils{ get; set; }
+        public virtual DbSet<StateRegistrationInfo>  StateRegistrationInfos{ get; set; }
+        public virtual DbSet<Changing>  Changings { get; set; }
+
     }
-
-    //public class MyEntity
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //}
 }

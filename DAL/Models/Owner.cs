@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    class Owner
+    public class Owner
     {
         public int Id { get; set; }
         // Foreign key

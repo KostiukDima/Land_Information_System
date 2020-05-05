@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    class PhysicalIndividual
+    public class PhysicalIndividual
     {
         public int Id { get; set; }
         public string Name { get; set; }
