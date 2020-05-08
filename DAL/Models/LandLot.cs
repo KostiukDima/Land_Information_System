@@ -10,7 +10,7 @@ namespace DAL.Models
     {
         // Primary key
         public int Id { get; set; }
-        public string СadastralNumber { get; set; }
+        public string CadastralNumber { get; set; }
         public double Area { get; set; }
         // Foreign key
         public int LocationId { get; set; }

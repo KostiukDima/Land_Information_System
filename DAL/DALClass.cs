@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,11 @@ namespace DAL
         public DALClass()
         {
             context = new LandSystemDBModel(); 
+        }
+
+        public void AddLandLot(LandLot landLot)
+        {
+            context.LandLots.Add(landLot);
         }
     }
 }
