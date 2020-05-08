@@ -20,7 +20,6 @@ namespace Service.DTO
         [DataMember] public int OwnershipTypeId { get; set; }
         [DataMember] public int MonetaryValuationId { get; set; }
         [DataMember] public int StateRegistrationInfoId { get; set; }
-        [DataMember] public int SoilId { get; set; }
-        [DataMember] public int OwnerId { get; set; }
+        [DataMember] public int SoilId { get; set; }        
     }
 }

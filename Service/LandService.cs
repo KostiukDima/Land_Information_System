@@ -19,7 +19,7 @@ namespace Service
         {
                 
         }
-
+        
         public void AddLandLot(LandLotDTO landLotDTO)
         {
             LandLot newLandLot = new LandLot()
