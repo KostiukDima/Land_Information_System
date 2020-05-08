@@ -8,5 +8,11 @@ namespace DAL
 {
     public class DALClass
     {
+        LandSystemDBModel context;
+
+        public DALClass()
+        {
+            context = new LandSystemDBModel(); 
+        }
     }
 }

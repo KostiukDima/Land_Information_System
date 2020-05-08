@@ -143,6 +143,14 @@ namespace DAL
                 context.LandCategories.Add(new LandCategory() { Name = "Землі водного фонду" });
                 context.LandCategories.Add(new LandCategory() { Name = "Землі промисловості, транспорту, зв'язку, енергетики, оборони та іншого призначення" });
             }
+
+            //Add OwnershipTypes
+            {
+                context.OwnershipTypes.Add(new OwnershipType() { Name = "Приватна"});
+                context.OwnershipTypes.Add(new OwnershipType() { Name = "Комунальна"});
+                context.OwnershipTypes.Add(new OwnershipType() { Name = "Державна"});
+                context.OwnershipTypes.Add(new OwnershipType() { Name = "Дані відсутні"});
+            }
         }
     }
 }
