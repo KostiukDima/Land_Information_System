@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Service.DTO
 {
     [DataContract]
-    class PhysicalIndividualDTO
+    public class PhysicalIndividualDTO
     {
         [DataMember] public int Id { get; set; }
         [DataMember] public string Name { get; set; }

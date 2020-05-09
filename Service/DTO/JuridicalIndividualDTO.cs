@@ -12,6 +12,6 @@ namespace Service.DTO
     {
         [DataMember] public int Id { get; set; }
         [DataMember] public string Name { get; set; }
-        [DataMember] public int EDRPOUcode { get; set; }
+        [DataMember] public string EDRPOUcode { get; set; }
     }
 }

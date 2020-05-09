@@ -20,10 +20,11 @@ namespace DAL
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Configurations.Add(new ChangingConfig());
             modelBuilder.Configurations.Add(new ExploitationTypeConfig());
             modelBuilder.Configurations.Add(new JuridicalIndividualConfig());
             modelBuilder.Configurations.Add(new LandCategoryConfig());
-            modelBuilder.Configurations.Add(new LandCategoryConfig());
+            modelBuilder.Configurations.Add(new LandLotConfig());
             modelBuilder.Configurations.Add(new LocationConfig());
             modelBuilder.Configurations.Add(new MonetaryValuationConfig());
             modelBuilder.Configurations.Add(new OrderConfig());
@@ -32,7 +33,6 @@ namespace DAL
             modelBuilder.Configurations.Add(new PhysicalIndividualConfig());
             modelBuilder.Configurations.Add(new PurposeConfig());
             modelBuilder.Configurations.Add(new SoilConfig());
-            modelBuilder.Configurations.Add(new ChangingConfig());
             modelBuilder.Configurations.Add(new StateRegistrationInfoConfig());
 
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();

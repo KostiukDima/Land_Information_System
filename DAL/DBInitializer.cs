@@ -129,6 +129,7 @@ namespace DAL
                 context.Purposes.Add(new Purpose() { Code = "17.00", Name = "Землі резервного фонду(землі, створені органами виконавчої влади або органами місцевого самоврядування у процесі приватизації сільськогосподарських угідь, які були у постійному користуванні відповідних підприємств, установ та організацій)" });
                 context.Purposes.Add(new Purpose() { Code = "18.00", Name = "Землі загального користування(землі будь - якої категорії, які використовуються як майдани, вулиці, проїзди, шляхи, громадські пасовища, сіножаті, набережні, пляжі, парки, зеленізони, сквери, бульвари, водні об'єкти загального користування, а також інші землі, якщо рішенням відповідного органу державної влади чи місцевого самоврядування їх віднесено до земель загального користування)" });
                 context.Purposes.Add(new Purpose() { Code = "19.00", Name = "Для цілей підрозділів 16.00 - 18.00 та для збереження та використання земель природно - заповідного фонду" });
+                context.SaveChanges();
             }
 
             // Add LandCategories
@@ -142,6 +143,7 @@ namespace DAL
                 context.LandCategories.Add(new LandCategory() { Name = "Землі лісогосподарського призначення" });
                 context.LandCategories.Add(new LandCategory() { Name = "Землі водного фонду" });
                 context.LandCategories.Add(new LandCategory() { Name = "Землі промисловості, транспорту, зв'язку, енергетики, оборони та іншого призначення" });
+                context.SaveChanges();
             }
 
             //Add OwnershipTypes
@@ -150,12 +152,11 @@ namespace DAL
                 context.OwnershipTypes.Add(new OwnershipType() { Name = "Комунальна" });
                 context.OwnershipTypes.Add(new OwnershipType() { Name = "Державна" });
                 context.OwnershipTypes.Add(new OwnershipType() { Name = "Інформація про зареєстроване право в Державному земельному кадастрі відсутня" });
+                context.SaveChanges();
             }
 
             //Add Soil
             {
-                context.Soils.Add(new Soil() { AgroGroupCode = "", Name = "" });
-
                 context.Soils.Add(new Soil() { AgroGroupCode = "1а", Name = "Дерново-прихованопідзолисті і дернові слаборозвинені піщані ґрунти на перевіюваних пісках" });
                 context.Soils.Add(new Soil() { AgroGroupCode = "1б", Name = "Дерново-прихованопідзолисті і дернові слаборозвинені глинисто-піщані ґрунти на перевіюваних пісках" });
                 context.Soils.Add(new Soil() { AgroGroupCode = "2б", Name = "Дерново-підзолисті переважно малорозвинені щебенюваті глинисто-піщані ґрунти з плямами елювію масивно кристалічних порід(30 - 50 відсотків)" });
@@ -901,6 +902,7 @@ namespace DAL
                 context.Soils.Add(new Soil() { AgroGroupCode = "220", Name = "Зольники" });
                 context.Soils.Add(new Soil() { AgroGroupCode = "221", Name = "Комплекси деформованих ґрунтів на ділянках активних зсувів" });
                 context.Soils.Add(new Soil() { AgroGroupCode = "222", Name = "Комплекси деформованих ґрунтів на ділянках пасивних зсувів" });
+                context.SaveChanges();
             }
         }
     }
