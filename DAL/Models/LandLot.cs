@@ -10,7 +10,7 @@ namespace DAL.Models
     {
         // Primary key
         public int Id { get; set; }
-        public string СadastralNumber { get; set; }
+        public string CadastralNumber { get; set; }
         public double Area { get; set; }
         // Foreign key
         public int LocationId { get; set; }
@@ -33,8 +33,12 @@ namespace DAL.Models
         public virtual Soil Soil { get; set; }
         public virtual Owner Owner  { get; set; }
         public virtual ICollection<Order> Order { get; set; }
-        public virtual ICollection<Changing>  Сhangings { get; set; }
+        public virtual ICollection<Changing>  Changings { get; set; }
 
-
+        //public LandLot()
+        //{
+        //    Order = new HashSet<Order>();
+        //    Changings = new HashSet<Changing>();
+        //}
     }
 }

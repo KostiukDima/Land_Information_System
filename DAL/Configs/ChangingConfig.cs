@@ -13,7 +13,7 @@ namespace DAL.Configs
         public ChangingConfig()
         {
             Property(c => c.Description).IsRequired();
-            HasRequired<LandLot>(c => c.LandLot).WithMany(ll => ll.Сhangings).HasForeignKey(ll => ll.LandLotId);
+            HasRequired<LandLot>(c => c.LandLot).WithMany(ll => ll.Changings).HasForeignKey(ll => ll.LandLotId);
 
         }
     }

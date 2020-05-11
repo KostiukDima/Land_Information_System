@@ -13,7 +13,7 @@ namespace DAL.Configs
         public LandLotConfig()
         {
             Property(l => l.Area).IsRequired();
-            Property(l => l.СadastralNumber).IsRequired();
+            Property(l => l.CadastralNumber).IsRequired();
         }
     }
 }
