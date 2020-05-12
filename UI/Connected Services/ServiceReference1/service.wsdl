@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LandService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Service.DTO" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ILandService_AddLandLot_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddLandLot" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_AddLandLot_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddLandLotResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandCategories" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetSoils_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSoils" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetSoils_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSoilsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetOwnershipTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOwnershipTypes" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetOwnershipTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOwnershipTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetPurposes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurposes" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetPurposes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurposesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ILandService">
+    <wsdl:operation name="AddLandLot">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/AddLandLot" message="tns:ILandService_AddLandLot_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/AddLandLotResponse" message="tns:ILandService_AddLandLot_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLandCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetLandCategories" message="tns:ILandService_GetLandCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetLandCategoriesResponse" message="tns:ILandService_GetLandCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSoils">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetSoils" message="tns:ILandService_GetSoils_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetSoilsResponse" message="tns:ILandService_GetSoils_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOwnershipTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetOwnershipTypes" message="tns:ILandService_GetOwnershipTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetOwnershipTypesResponse" message="tns:ILandService_GetOwnershipTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurposes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetPurposes" message="tns:ILandService_GetPurposes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetPurposesResponse" message="tns:ILandService_GetPurposes_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="basicHttp_ILandService" type="tns:ILandService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddLandLot">
+      <soap:operation soapAction="http://tempuri.org/ILandService/AddLandLot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLandCategories">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetLandCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSoils">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetSoils" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOwnershipTypes">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetOwnershipTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurposes">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetPurposes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LandService">
+    <wsdl:port name="basicHttp_ILandService" binding="tns:basicHttp_ILandService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/Service/Service1/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

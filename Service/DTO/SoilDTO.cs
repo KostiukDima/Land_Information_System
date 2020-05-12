@@ -13,5 +13,12 @@ namespace Service.DTO
         [DataMember] public int Id { get; set; }
         [DataMember] public string AgroGroupCode { get; set; }
         [DataMember] public string Name { get; set; }
+
+        [DataMember]
+        public string FullName
+        {
+            get { return AgroGroupCode + " " + Name; }
+            set { Name = value; AgroGroupCode = value; }
+        }
     }
 }

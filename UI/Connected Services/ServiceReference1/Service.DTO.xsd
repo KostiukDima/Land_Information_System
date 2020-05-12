@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Service.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Service.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="LandLotDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Area" type="xs:double" />
+      <xs:element minOccurs="0" name="CadastralNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExploitationTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LandCategoryId" type="xs:int" />
+      <xs:element minOccurs="0" name="LocationId" type="xs:int" />
+      <xs:element minOccurs="0" name="MonetaryValuationId" type="xs:int" />
+      <xs:element minOccurs="0" name="OwnershipTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="PurposeId" type="xs:int" />
+      <xs:element minOccurs="0" name="SoilId" type="xs:int" />
+      <xs:element minOccurs="0" name="StateRegistrationInfoId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LandLotDTO" nillable="true" type="tns:LandLotDTO" />
+  <xs:complexType name="ExploitationTypeDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExploitationTypeDTO" nillable="true" type="tns:ExploitationTypeDTO" />
+  <xs:complexType name="LocationDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="District" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LandLotId" type="xs:int" />
+      <xs:element minOccurs="0" name="Region" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Settlement" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocationDTO" nillable="true" type="tns:LocationDTO" />
+  <xs:complexType name="MonetaryValuationDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Kf" type="xs:double" />
+      <xs:element minOccurs="0" name="Km" type="xs:double" />
+      <xs:element minOccurs="0" name="LandLotId" type="xs:int" />
+      <xs:element minOccurs="0" name="Value" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MonetaryValuationDTO" nillable="true" type="tns:MonetaryValuationDTO" />
+  <xs:complexType name="StateRegistrationInfoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LandLotId" type="xs:int" />
+      <xs:element minOccurs="0" name="RegistrationAgency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TechnicalDocumentation" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StateRegistrationInfoDTO" nillable="true" type="tns:StateRegistrationInfoDTO" />
+  <xs:complexType name="ArrayOfPhysicalIndividualDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PhysicalIndividualDTO" nillable="true" type="tns:PhysicalIndividualDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPhysicalIndividualDTO" nillable="true" type="tns:ArrayOfPhysicalIndividualDTO" />
+  <xs:complexType name="PhysicalIndividualDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhysicalIndividualDTO" nillable="true" type="tns:PhysicalIndividualDTO" />
+  <xs:complexType name="JuridicalIndividualDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EDRPOUcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JuridicalIndividualDTO" nillable="true" type="tns:JuridicalIndividualDTO" />
+  <xs:complexType name="ArrayOfLandCategoryDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LandCategoryDTO" nillable="true" type="tns:LandCategoryDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLandCategoryDTO" nillable="true" type="tns:ArrayOfLandCategoryDTO" />
+  <xs:complexType name="LandCategoryDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LandCategoryDTO" nillable="true" type="tns:LandCategoryDTO" />
+  <xs:complexType name="ArrayOfSoilDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SoilDTO" nillable="true" type="tns:SoilDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSoilDTO" nillable="true" type="tns:ArrayOfSoilDTO" />
+  <xs:complexType name="SoilDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AgroGroupCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoilDTO" nillable="true" type="tns:SoilDTO" />
+  <xs:complexType name="ArrayOfOwnershipTypeDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OwnershipTypeDTO" nillable="true" type="tns:OwnershipTypeDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOwnershipTypeDTO" nillable="true" type="tns:ArrayOfOwnershipTypeDTO" />
+  <xs:complexType name="OwnershipTypeDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OwnershipTypeDTO" nillable="true" type="tns:OwnershipTypeDTO" />
+  <xs:complexType name="ArrayOfPurposeDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PurposeDTO" nillable="true" type="tns:PurposeDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPurposeDTO" nillable="true" type="tns:ArrayOfPurposeDTO" />
+  <xs:complexType name="PurposeDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PurposeDTO" nillable="true" type="tns:PurposeDTO" />
+</xs:schema>

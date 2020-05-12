@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{5F823677-AE19-4D90-B98E-6B0C2A5A7930}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{DB9DB746-C115-4599-9AC3-0276769DD4DE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5F823677-AE19-4D90-B98E-6B0C2A5A7930} = {5F823677-AE19-4D90-B98E-6B0C2A5A7930}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

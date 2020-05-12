@@ -16,17 +16,28 @@ namespace Service
             (
                 LandLotDTO landLotDTO,
                 ExploitationTypeDTO exploitationTypeDTO,
-                LandCategoryDTO landCategoryDTO,
+               
                 LocationDTO locationDTO,
                 MonetaryValuationDTO monetaryValuationDTO,
-                OwnershipTypeDTO ownershipTypeDTO,
-                PurposeDTO purposeDTO,
-                SoilDTO soilDTO,
+                
+                
                 StateRegistrationInfoDTO stateRegistrationInfoDTO,
                 ICollection<PhysicalIndividualDTO> physicalIndividualDTOs,
                 JuridicalIndividualDTO juridicalIndividualDTO
 
             );
+
+        [OperationContract]
+        LandCategoryDTO[] GetLandCategories(); 
+        
+        [OperationContract]
+        SoilDTO[] GetSoils();
+        
+        [OperationContract]
+        OwnershipTypeDTO[] GetOwnershipTypes();
+        
+        [OperationContract]
+        PurposeDTO[] GetPurposes(string name);
 
     }
 

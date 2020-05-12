@@ -17,19 +17,15 @@ namespace Service
 
         public LandService()
         {
-            dal.Test();
         }
 
         public void AddLandLot
         (
             LandLotDTO landLotDTO,
-            ExploitationTypeDTO exploitationTypeDTO,
-            LandCategoryDTO landCategoryDTO,
+            ExploitationTypeDTO exploitationTypeDTO,            
             LocationDTO locationDTO,
-            MonetaryValuationDTO monetaryValuationDTO,
-            OwnershipTypeDTO ownershipTypeDTO,
-            PurposeDTO purposeDTO,
-            SoilDTO soilDTO,
+            MonetaryValuationDTO monetaryValuationDTO,           
+            
             StateRegistrationInfoDTO stateRegistrationInfoDTO,
             ICollection<PhysicalIndividualDTO> physicalIndividualDTOs,
             JuridicalIndividualDTO juridicalIndividualDTO
@@ -40,10 +36,10 @@ namespace Service
             {
                 CadastralNumber = landLotDTO.CadastralNumber,
                 Area = landLotDTO.Area,
-                LandCategoryId = landCategoryDTO.Id,
-                OwnershipTypeId = ownershipTypeDTO.Id,
-                PurposeId = purposeDTO.Id,
-                SoilId = soilDTO.Id
+                LandCategoryId = landLotDTO.LandCategoryId,
+                OwnershipTypeId = landLotDTO.OwnershipTypeId,
+                PurposeId = landLotDTO.PurposeId,
+                SoilId = landLotDTO.SoilId
             };
 
             newLandLot.Location = new Location()
@@ -64,7 +60,7 @@ namespace Service
             newLandLot.StateRegistrationInfo = new StateRegistrationInfo()
             {
                 RegistrationAgency = stateRegistrationInfoDTO.RegistrationAgency,
-                TechnicalDocumentation= stateRegistrationInfoDTO.TechnicalDocumentation,
+                TechnicalDocumentation = stateRegistrationInfoDTO.TechnicalDocumentation,
                 DateTime = stateRegistrationInfoDTO.DateTime
             };
 
@@ -79,32 +75,32 @@ namespace Service
 
                 foreach (var item in physicalIndividualDTOs)
                 {
-                    if(item.Id==-1)
-                    owner.PhysicalIndividuals.Add
-                        (new PhysicalIndividual()
+                    if (item.Id == -1)
+                        owner.PhysicalIndividuals.Add
+                            (new PhysicalIndividual()
                             {
                                 Name = item.Name,
                                 Surname = item.Surname,
                                 MiddleName = item.MiddleName,
                                 DateOfBirth = item.DateOfBirth
                             }
-                        );
+                            );
                     else
                         owner.PhysicalIndividuals.Add
                         (new PhysicalIndividual()
-                            {
-                                Id = item.Id,
-                                Name = item.Name,
-                                Surname = item.Surname,
-                                MiddleName = item.MiddleName,
-                                DateOfBirth = item.DateOfBirth
-                            }
+                        {
+                            Id = item.Id,
+                            Name = item.Name,
+                            Surname = item.Surname,
+                            MiddleName = item.MiddleName,
+                            DateOfBirth = item.DateOfBirth
+                        }
                         );
 
 
 
                 }
-                   
+
                 newLandLot.Owner = owner;
             }
             else
@@ -127,5 +123,107 @@ namespace Service
 
             dal.AddLandLot(newLandLot);
         }
+
+
+        public LandCategoryDTO[] GetLandCategories()
+        {
+            List<LandCategoryDTO> landCategoryDTOs = new List<LandCategoryDTO>();
+
+            foreach (var item in dal.GetLandCategories())
+            {
+                landCategoryDTOs.Add(new LandCategoryDTO() { Id = item.Id, Name = item.Name });
+            }
+            return landCategoryDTOs.ToArray();
+        }
+
+        public SoilDTO[] GetSoils()
+        {
+            List<SoilDTO> soilDTOs = new List<SoilDTO>();
+
+            foreach (var item in dal.GetSoils())
+            {
+                soilDTOs.Add(new SoilDTO() { Id = item.Id, Name = item.Name, AgroGroupCode = item.AgroGroupCode });
+            }
+            return soilDTOs.ToArray();
+        }
+
+        public PurposeDTO[] GetPurposes(string name)
+        {
+            List<PurposeDTO> purposeDTOs = new List<PurposeDTO>();
+
+            IEnumerable<Purpose> purposes = null;
+
+            if (name == "Землі сільськогосподарського призначення")
+            {
+                purposes = dal.GetPurposes().Where(p => p.Code.Substring(0, 2) == "01");
+            }
+            else if (name == "Землі житлової та громадської забудови")
+            {
+                purposes = dal.GetPurposes().Where(p => p.Code.Substring(0, 2) == "02" || p.Code.Substring(0, 2) == "03");
+            }
+            else if (name == "Землі природно-заповідного та іншого природоохоронного призначення")
+            {
+                purposes = dal.GetPurposes().Where(p => p.Code.Substring(0, 2) == "04" || p.Code.Substring(0, 2) == "05");
+            }
+            else if (name == "Землі оздоровчого призначення")
+            {
+                purposes = dal.GetPurposes().Where(p => p.Code.Substring(0, 2) == "06");
+            }
+            else if (name == "Землі рекреаційного призначення")
+            {
+                purposes = dal.GetPurposes().Where(p => p.Code.Substring(0, 2) == "07");
+            }
+            else if (name == "Землі історико-культурного призначення")
+            {
+                purposes = dal.GetPurposes().Where(p => p.Code.Substring(0, 2) == "08");
+            }
+            else if (name == "Землі лісогосподарського призначення")
+            {
+                purposes = dal.GetPurposes().Where(p => p.Code.Substring(0, 2) == "09");
+            }
+            else if (name == "Землі водного фонду")
+            {
+                purposes = dal.GetPurposes().Where(p => p.Code.Substring(0, 2) == "10");
+            }
+            else if (name == "Землі промисловості, транспорту, зв'язку, енергетики, оборони та іншого призначення")
+            {
+                purposes = dal.GetPurposes().Where(p => 
+                   p.Code.Substring(0, 2) == "11"
+                || p.Code.Substring(0, 2) == "12"
+                || p.Code.Substring(0, 2) == "13"
+                || p.Code.Substring(0, 2) == "14"
+                || p.Code.Substring(0, 2) == "15");
+            }
+            else if (name == "Землі запасу, резервного фонду та загального користування")
+            {
+                purposes = dal.GetPurposes().Where(p =>
+                       p.Code.Substring(0, 2) == "16"
+                    || p.Code.Substring(0, 2) == "17"
+                    || p.Code.Substring(0, 2) == "18"
+                    || p.Code.Substring(0, 2) == "19");
+            }
+
+                       
+            if (purposes == null) return null;
+
+            foreach (var item in purposes)
+            {
+                purposeDTOs.Add(new PurposeDTO() { Id = item.Id, Name = item.Name, Code= item.Code });
+            }
+            return purposeDTOs.ToArray();
+        }
+
+        public OwnershipTypeDTO[] GetOwnershipTypes()
+        {
+            List<OwnershipTypeDTO> ownershipTypeDTOs = new List<OwnershipTypeDTO>();
+
+            foreach (var item in dal.GetOwnershipType())
+            {
+                ownershipTypeDTOs.Add(new OwnershipTypeDTO() { Id = item.Id, Name = item.Name });
+            }
+            return ownershipTypeDTOs.ToArray();
+        }
     }
+
+
 }

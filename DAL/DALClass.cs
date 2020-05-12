@@ -52,10 +52,25 @@ namespace DAL
 
             return pi.Id;
         }
-
-         public void Test()
+        
+        public IEnumerable<LandCategory> GetLandCategories()
         {
-            context.ExploitationTypes.Add(new ExploitationType() { Name = "sdfnsjdf" }); 
+            return context.LandCategories.ToList();
+        }
+
+        public IEnumerable<OwnershipType> GetOwnershipType()
+        {
+            return context.OwnershipTypes.ToList();
+        }
+
+        public IEnumerable<Soil> GetSoils()
+        {
+            return context.Soils.ToList();
+        }
+
+        public IEnumerable<Purpose> GetPurposes()
+        {
+            return context.Purposes.ToList();
         }
 
         public void AddJuridicalIndividual(JuridicalIndividual juridicalIndividual)

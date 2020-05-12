@@ -14,7 +14,7 @@ namespace DAL.Configs
         {
             Property(p => p.AgroGroupCode).IsRequired();
             Property(p => p.Name).IsRequired();
-            HasMany<LandLot>(s => s.LandLots).WithRequired(ll => ll.Soil).HasForeignKey(l => l.SoilId);
+            HasMany<LandLot>(s => s.LandLots).WithOptional(ll => ll.Soil).HasForeignKey(l => l.SoilId);
 
         }
     }

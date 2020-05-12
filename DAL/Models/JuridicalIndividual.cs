@@ -13,5 +13,7 @@ namespace DAL.Models
         public string EDRPOUcode { get; set; }
         // Navigation properties
         public virtual ICollection<Owner> Owners { get; set; }
+
+
     }
 }

@@ -20,7 +20,7 @@ namespace DAL.Models
         public int OwnershipTypeId { get; set; }
         public int MonetaryValuationId { get; set; }
         public int StateRegistrationInfoId { get; set; }
-        public int SoilId { get; set; }
+        public int? SoilId { get; set; }
         public int OwnerId { get; set; }
         // Navigation properties
         public virtual Location Location { get; set; }

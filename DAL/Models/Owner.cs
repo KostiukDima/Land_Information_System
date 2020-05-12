@@ -16,5 +16,10 @@ namespace DAL.Models
         public virtual LandLot LandLot { get; set; }
         public virtual JuridicalIndividual JuridicalIndividual { get; set; }
         public virtual ICollection<PhysicalIndividual> PhysicalIndividuals { get; set; }
+
+        public Owner()
+        {
+            PhysicalIndividuals = new HashSet<PhysicalIndividual>();            
+        }
     }
 }

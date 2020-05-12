@@ -143,6 +143,7 @@ namespace DAL
                 context.LandCategories.Add(new LandCategory() { Name = "Землі лісогосподарського призначення" });
                 context.LandCategories.Add(new LandCategory() { Name = "Землі водного фонду" });
                 context.LandCategories.Add(new LandCategory() { Name = "Землі промисловості, транспорту, зв'язку, енергетики, оборони та іншого призначення" });
+                context.LandCategories.Add(new LandCategory() { Name = "Землі запасу, резервного фонду та загального користування" });
                 context.SaveChanges();
             }
 

@@ -16,5 +16,10 @@ namespace DAL.Models
 
         // Navigation properties
         public virtual ICollection<Owner> Owners { get; set; }
+
+        public PhysicalIndividual()
+        {
+            Owners = new HashSet<Owner>();
+        }
     }
 }

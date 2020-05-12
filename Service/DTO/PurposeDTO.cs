@@ -13,5 +13,15 @@ namespace Service.DTO
        [DataMember] public int Id { get; set; }
        [DataMember] public string Code { get; set; }
        [DataMember] public string Name { get; set; }
+        
+       [DataMember] public string FullName 
+       { 
+            get { return Code + " " + Name; } 
+            set { Name = value; Code = value; } 
+       }
+
+        
+
+
     }
 }
