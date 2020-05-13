@@ -13,6 +13,18 @@
   <wsdl:message name="ILandService_AddLandLot_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddLandLotResponse" />
   </wsdl:message>
+  <wsdl:message name="ILandService_GetLandCategoryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandCategoryById" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandCategoryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandCategoryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandLotsbyLandCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandLotsbyLandCategory" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandLotsbyLandCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandLotsbyLandCategoryResponse" />
+  </wsdl:message>
   <wsdl:message name="ILandService_GetLandCategories_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLandCategories" />
   </wsdl:message>
@@ -42,6 +54,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILandService/AddLandLot" message="tns:ILandService_AddLandLot_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILandService/AddLandLotResponse" message="tns:ILandService_AddLandLot_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetLandCategoryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetLandCategoryById" message="tns:ILandService_GetLandCategoryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetLandCategoryByIdResponse" message="tns:ILandService_GetLandCategoryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLandLotsbyLandCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetLandLotsbyLandCategory" message="tns:ILandService_GetLandLotsbyLandCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetLandLotsbyLandCategoryResponse" message="tns:ILandService_GetLandLotsbyLandCategory_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetLandCategories">
       <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetLandCategories" message="tns:ILandService_GetLandCategories_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetLandCategoriesResponse" message="tns:ILandService_GetLandCategories_OutputMessage" />
@@ -63,6 +83,24 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="AddLandLot">
       <soap:operation soapAction="http://tempuri.org/ILandService/AddLandLot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLandCategoryById">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetLandCategoryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLandLotsbyLandCategory">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetLandLotsbyLandCategory" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -19,6 +19,34 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetLandCategoryById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLandCategoryByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="GetLandCategoryByIdResult" nillable="true" type="q8:LandCategoryDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLandLotsbyLandCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLandLotsbyLandCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="GetLandLotsbyLandCategoryResult" nillable="true" type="q9:ArrayOfLandLotDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetLandCategories">
     <xs:complexType>
       <xs:sequence />
@@ -27,7 +55,7 @@
   <xs:element name="GetLandCategoriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="GetLandCategoriesResult" nillable="true" type="q8:ArrayOfLandCategoryDTO" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="GetLandCategoriesResult" nillable="true" type="q10:ArrayOfLandCategoryDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -39,7 +67,7 @@
   <xs:element name="GetSoilsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="GetSoilsResult" nillable="true" type="q9:ArrayOfSoilDTO" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="GetSoilsResult" nillable="true" type="q11:ArrayOfSoilDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -51,7 +79,7 @@
   <xs:element name="GetOwnershipTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="GetOwnershipTypesResult" nillable="true" type="q10:ArrayOfOwnershipTypeDTO" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="GetOwnershipTypesResult" nillable="true" type="q12:ArrayOfOwnershipTypeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -65,7 +93,7 @@
   <xs:element name="GetPurposesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="GetPurposesResult" nillable="true" type="q11:ArrayOfPurposeDTO" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="GetPurposesResult" nillable="true" type="q13:ArrayOfPurposeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

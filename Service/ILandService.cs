@@ -15,18 +15,19 @@ namespace Service
         void AddLandLot
             (
                 LandLotDTO landLotDTO,
-                ExploitationTypeDTO exploitationTypeDTO,
-               
+                ExploitationTypeDTO exploitationTypeDTO,               
                 LocationDTO locationDTO,
-                MonetaryValuationDTO monetaryValuationDTO,
-                
-                
+                MonetaryValuationDTO monetaryValuationDTO,                
                 StateRegistrationInfoDTO stateRegistrationInfoDTO,
                 ICollection<PhysicalIndividualDTO> physicalIndividualDTOs,
                 JuridicalIndividualDTO juridicalIndividualDTO
 
             );
 
+        [OperationContract]
+        LandCategoryDTO GetLandCategoryById(int id);
+        [OperationContract]
+        LandLotDTO[] GetLandLotsbyLandCategory(string name);
         [OperationContract]
         LandCategoryDTO[] GetLandCategories(); 
         

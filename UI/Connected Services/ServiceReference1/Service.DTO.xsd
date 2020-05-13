@@ -11,7 +11,7 @@
       <xs:element minOccurs="0" name="MonetaryValuationId" type="xs:int" />
       <xs:element minOccurs="0" name="OwnershipTypeId" type="xs:int" />
       <xs:element minOccurs="0" name="PurposeId" type="xs:int" />
-      <xs:element minOccurs="0" name="SoilId" type="xs:int" />
+      <xs:element minOccurs="0" name="SoilId" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="StateRegistrationInfoId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
@@ -78,12 +78,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="JuridicalIndividualDTO" nillable="true" type="tns:JuridicalIndividualDTO" />
-  <xs:complexType name="ArrayOfLandCategoryDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="LandCategoryDTO" nillable="true" type="tns:LandCategoryDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfLandCategoryDTO" nillable="true" type="tns:ArrayOfLandCategoryDTO" />
   <xs:complexType name="LandCategoryDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
@@ -91,6 +85,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="LandCategoryDTO" nillable="true" type="tns:LandCategoryDTO" />
+  <xs:complexType name="ArrayOfLandLotDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LandLotDTO" nillable="true" type="tns:LandLotDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLandLotDTO" nillable="true" type="tns:ArrayOfLandLotDTO" />
+  <xs:complexType name="ArrayOfLandCategoryDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LandCategoryDTO" nillable="true" type="tns:LandCategoryDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLandCategoryDTO" nillable="true" type="tns:ArrayOfLandCategoryDTO" />
   <xs:complexType name="ArrayOfSoilDTO">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SoilDTO" nillable="true" type="tns:SoilDTO" />

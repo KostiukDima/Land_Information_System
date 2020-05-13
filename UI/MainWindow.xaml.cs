@@ -27,6 +27,7 @@ namespace UI
             InitializeComponent();            
             proxy = new LandServiceClient();
             PIRadioBtn.IsChecked = true;
+            GridFindRadioBtnCadasNum.IsChecked = true;
         }
 
         private void GridAddComBoxLandCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -195,5 +196,56 @@ namespace UI
             }
                 
         }
+
+        private void ButtonSearch_Click(object sender, RoutedEventArgs e)
+        {
+            LandLotDTO[] landLotDTOs = null;
+            if (GridFindRadioBtnCadasNum.IsChecked == true)
+            { }
+            else if (GridFindRadioBtnOwner.IsChecked == true)
+            { }
+            else if (GridFindRadioBtnLandCatrgory.IsChecked == true)
+                landLotDTOs = proxy.GetLandLotsbyLandCategory(TextFind.Text);
+            else if (GridFindRadioBtnPurpose.IsChecked == true)
+            { }
+            else if (GridFindRadioBtnSoil.IsChecked == true)
+            { }
+            else if (GridFindRadioBtnOwnershipType.IsChecked == true)
+            { }
+
+            ListBoxFindLand.Items.Clear();
+
+            if (landLotDTOs == null)
+                ListBoxFindLand.Items.Add(new Label() {Content = "Ділянок не знайдено", HorizontalAlignment = HorizontalAlignment.Center } );
+            else
+                foreach (var item in landLotDTOs)
+                {
+                    StackPanel sp = new StackPanel()
+                    {
+                        Orientation = Orientation.Horizontal
+                    };
+
+                    sp.Children.Add(new Label() { Content = item.CadastralNumber });
+                    sp.Children.Add(new Label() { Content = proxy.GetLandCategoryById(item.Id).Name });
+
+                    sp.Tag = item;
+
+                    ListBoxFindLand.Items.Add(sp);
+                }
+
+
+
+        }
+
+        private void GridFindRadioBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            //if(GridFindRadioBtnCadasNum.IsChecked == true)              
+            //else if(GridFindRadioBtnOwner.IsChecked == true)
+            //else if(GridFindRadioBtnLandCatrgory.IsChecked == true)
+            //else if (GridFindRadioBtnPurpose.IsChecked == true)
+            //else if(GridFindRadioBtnSoil.IsChecked == true)
+            //else if(GridFindRadioBtnOwnershipType.IsChecked == true)      
+        }
+
     }
 }

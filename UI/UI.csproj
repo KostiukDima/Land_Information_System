@@ -114,6 +114,9 @@
     <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.LandCategoryDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.LandLotDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.OwnershipTypeDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

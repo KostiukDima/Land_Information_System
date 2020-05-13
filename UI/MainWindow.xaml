@@ -36,14 +36,15 @@
 
         </StackPanel>
 
-        <Grid Name="GridFind" Grid.Column="1" Visibility="Collapsed">
+        <Grid Name="GridFind" Grid.Column="1" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="20*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="15*"/>
             </Grid.RowDefinitions>
 
 
@@ -51,14 +52,88 @@
             <TextBox
                 Grid.Column="0"
                 Margin="20 5"
+                Name="TextFind"
                 materialDesign:HintAssist.Hint="Пошуковий запит"
                 materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                VerticalAlignment="Center"  />
+                VerticalAlignment="Center"   />
 
 
-            <Button Content="{materialDesign:PackIcon Search}" Grid.Column="1"></Button>
+            <Button Content="{materialDesign:PackIcon Search}" Grid.Column="1" Margin="0,0,0,24.75" Grid.RowSpan="2" Click="ButtonSearch_Click"></Button>
 
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    
+                </Grid.ColumnDefinitions>
 
+                <RadioButton                     
+                    Name="GridFindRadioBtnCadasNum"
+                    HorizontalAlignment="Center"
+                    Checked="GridFindRadioBtn_Checked"
+                    GroupName="Find"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignRadioButton}"
+                    >Кадастровий номер</RadioButton>
+
+                <RadioButton                     
+                    Name="GridFindRadioBtnOwner"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Checked="GridFindRadioBtn_Checked"
+                    Grid.Column="1"
+                    GroupName="Find"
+                    Style="{StaticResource MaterialDesignRadioButton}"
+                    >Власник</RadioButton>
+
+                <RadioButton                     
+                    Name="GridFindRadioBtnLandCatrgory"
+                    Checked="GridFindRadioBtn_Checked"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Grid.Column="2"
+                    GroupName="Find"
+                    Style="{StaticResource MaterialDesignRadioButton}"
+                    >Категорія земель</RadioButton>
+
+                <RadioButton                     
+                    Name="GridFindRadioBtnPurpose"
+                    HorizontalAlignment="Center"
+                    Checked="GridFindRadioBtn_Checked"
+                    VerticalAlignment="Center"
+                    Grid.Column="3"
+                    GroupName="Find"
+                    Style="{StaticResource MaterialDesignRadioButton}"
+                    >Цільове призначення</RadioButton>
+
+                <RadioButton                     
+                    Name="GridFindRadioBtnSoil"
+                    HorizontalAlignment="Center"
+                    Checked="GridFindRadioBtn_Checked"
+                    VerticalAlignment="Center"
+                    GroupName="Find"
+                    Grid.Column="4"
+                    Style="{StaticResource MaterialDesignRadioButton}"
+                    >Грунти</RadioButton>
+
+                <RadioButton                     
+                    Name="GridFindRadioBtnOwnershipType"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Grid.Column="5"
+                    Checked="GridFindRadioBtn_Checked"
+                    GroupName="Find"
+                    Style="{StaticResource MaterialDesignRadioButton}"
+                    >Форма власності</RadioButton>
+            </Grid>
+
+            <ListBox Name="ListBoxFindLand"  Grid.Row="2">
+                
+            </ListBox>
 
 
 
@@ -67,7 +142,7 @@
 
         </Grid>
 
-        <Grid Name="GridAdd" Grid.Column="1" Margin="10" >
+        <Grid Name="GridAdd" Grid.Column="1" Margin="10" Visibility="Collapsed"  >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -104,7 +179,7 @@
                     FontSize="15"
                     >
                     Загальні відомості про земельну ділянку
-                </TextBlock>                
+                </TextBlock>
             </materialDesign:ColorZone>
 
             <TextBox Margin="0,0,10,0" Name="GridAddCadastralNumber"
@@ -234,10 +309,12 @@
                 <RadioButton 
                     Style="{StaticResource MaterialDesignRadioButton}"
                     HorizontalAlignment="Center"
+                    GroupName="Add"
                     Name="PIRadioBtn" Checked="PIRadioBtn_Checked"
                     >Фізична Особа</RadioButton>
                 <RadioButton 
                     Grid.Column="1"
+                    GroupName="Add"
                     Name="JIRadioBtn"
                     HorizontalAlignment="Center"
                     Style="{StaticResource MaterialDesignRadioButton}" Checked="JIRadioBtn_Checked"
@@ -367,7 +444,7 @@
             materialDesign:HintAssist.Hint="Орган який зареєстрував земельну ділянку"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
             VerticalAlignment="Center" />
-            <DatePicker
+                <DatePicker
                     Margin="0,0,10,0"
             Name="GridAddRegistrationInfoDate"
             Grid.Column="1"

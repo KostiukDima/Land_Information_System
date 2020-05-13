@@ -87,6 +87,11 @@ namespace DAL
         {
             return context.LandCategories.ToList();
         }
+        
+        public IEnumerable<LandLot> GetLandLots()
+        {
+            return context.LandLots.ToList();
+        }
 
         public IEnumerable<OwnershipType> GetOwnershipType()
         {

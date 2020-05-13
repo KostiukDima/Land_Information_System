@@ -42,13 +42,7 @@ namespace Service
                 SoilId = landLotDTO.SoilId
             };
 
-            //newLandLot.Location = new Location()
-            //{
-            //    District = locationDTO.District,
-            //    Region = locationDTO.Region,
-            //    Settlement = locationDTO.Settlement,
-            //    Street = locationDTO.Street
-            //};
+
 
             newLandLot.LocationId = dal.AddLocations
                 (new Location()
@@ -61,7 +55,7 @@ namespace Service
                 );
 
 
-                                          
+
 
             newLandLot.MonetaryValuationId = dal.AddMonetaryValuation(new MonetaryValuation()
             {
@@ -240,6 +234,44 @@ namespace Service
                 ownershipTypeDTOs.Add(new OwnershipTypeDTO() { Id = item.Id, Name = item.Name });
             }
             return ownershipTypeDTOs.ToArray();
+        }
+
+        public LandLotDTO[] GetLandLotsbyLandCategory(string name)
+        {
+            List<LandLotDTO> landLotDTOs = new List<LandLotDTO>();
+
+            foreach (var item in dal.GetLandLots())
+            {
+                if (item.LandCategory.Name == name)
+                    landLotDTOs.Add
+                            (new LandLotDTO()
+                            {
+                                Id = item.Id,
+                                CadastralNumber = item.CadastralNumber,
+                                Area = item.Area,
+                                LandCategoryId = item.LandCategoryId,
+                                OwnershipTypeId = item.OwnershipTypeId,
+                                PurposeId = item.PurposeId,
+                                SoilId = item.SoilId,
+                                ExploitationTypeId = item.ExploitationTypeId,
+                                LocationId = item.LocationId,
+                                MonetaryValuationId = item.MonetaryValuationId,
+                                StateRegistrationInfoId = item.StateRegistrationInfoId
+                            });
+            }
+
+            if (landLotDTOs.Count == 0) return null;
+
+            return landLotDTOs.ToArray();
+        }
+
+        public LandCategoryDTO GetLandCategoryById(int id)
+        {
+            LandCategory landCategory = dal.GetLandCategories().FirstOrDefault(l => l.Id == id);
+
+            if (landCategory == null) return null;
+
+            return new LandCategoryDTO() { Name = landCategory.Name, Id = landCategory.Id };
         }
     }
 
