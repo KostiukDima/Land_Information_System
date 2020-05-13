@@ -173,7 +173,7 @@ namespace UI
                     null
                 );
             }
-            else if (PIRadioBtn.IsChecked == true)
+            else if (JIRadioBtn.IsChecked == true)
             {
                 JuridicalIndividualDTO juridicalIndividualDTO = new JuridicalIndividualDTO()
                 {

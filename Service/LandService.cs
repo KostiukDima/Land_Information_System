@@ -22,10 +22,10 @@ namespace Service
         public void AddLandLot
         (
             LandLotDTO landLotDTO,
-            ExploitationTypeDTO exploitationTypeDTO,            
+            ExploitationTypeDTO exploitationTypeDTO,
             LocationDTO locationDTO,
-            MonetaryValuationDTO monetaryValuationDTO,           
-            
+            MonetaryValuationDTO monetaryValuationDTO,
+
             StateRegistrationInfoDTO stateRegistrationInfoDTO,
             ICollection<PhysicalIndividualDTO> physicalIndividualDTOs,
             JuridicalIndividualDTO juridicalIndividualDTO
@@ -42,27 +42,40 @@ namespace Service
                 SoilId = landLotDTO.SoilId
             };
 
-            newLandLot.Location = new Location()
-            {
-                District = locationDTO.District,
-                Region = locationDTO.Region,
-                Settlement = locationDTO.Settlement,
-                Street = locationDTO.Street
-            };
+            //newLandLot.Location = new Location()
+            //{
+            //    District = locationDTO.District,
+            //    Region = locationDTO.Region,
+            //    Settlement = locationDTO.Settlement,
+            //    Street = locationDTO.Street
+            //};
 
-            newLandLot.MonetaryValuation = new MonetaryValuation()
+            newLandLot.LocationId = dal.AddLocations
+                (new Location()
+                {
+                    District = locationDTO.District,
+                    Region = locationDTO.Region,
+                    Settlement = locationDTO.Settlement,
+                    Street = locationDTO.Street
+                }
+                );
+
+
+                                          
+
+            newLandLot.MonetaryValuationId = dal.AddMonetaryValuation(new MonetaryValuation()
             {
                 Value = monetaryValuationDTO.Value,
                 Kf = monetaryValuationDTO.Kf,
                 Km = monetaryValuationDTO.Km,
-            };
+            });
 
-            newLandLot.StateRegistrationInfo = new StateRegistrationInfo()
+            newLandLot.StateRegistrationInfoId = dal.AddStateRegistrationInfo(new StateRegistrationInfo()
             {
                 RegistrationAgency = stateRegistrationInfoDTO.RegistrationAgency,
                 TechnicalDocumentation = stateRegistrationInfoDTO.TechnicalDocumentation,
                 DateTime = stateRegistrationInfoDTO.DateTime
-            };
+            });
 
             if (dal.GetExploitationTypeByName(exploitationTypeDTO.Name) == null)
                 dal.AddExploitationType(new ExploitationType() { Name = exploitationTypeDTO.Name });
@@ -101,21 +114,26 @@ namespace Service
 
                 }
 
-                newLandLot.Owner = owner;
+                newLandLot.OwnerId = dal.AddOwner(owner);
             }
             else
             {
-                if (juridicalIndividualDTO.Id == -1)
-                    newLandLot.Owner = new Owner()
+                Owner owner = new Owner();
+
+                if (null == dal.GetJuridicalIndividual(juridicalIndividualDTO.Name,
+                    juridicalIndividualDTO.EDRPOUcode))
+                    owner.JuridicalIndividualId = dal.AddJuridicalIndividual(new JuridicalIndividual()
                     {
-                        JuridicalIndividual = new JuridicalIndividual()
-                        {
-                            EDRPOUcode = juridicalIndividualDTO.EDRPOUcode,
-                            Name = juridicalIndividualDTO.Name
-                        }
-                    };
+                        EDRPOUcode = juridicalIndividualDTO.EDRPOUcode,
+                        Name = juridicalIndividualDTO.Name
+                    });
                 else
-                    newLandLot.Owner = new Owner() { JuridicalIndividualId = juridicalIndividualDTO.Id };
+                    owner.JuridicalIndividualId = dal.GetJuridicalIndividual
+                       (juridicalIndividualDTO.Name,
+                           juridicalIndividualDTO.EDRPOUcode).Id;
+
+
+                newLandLot.OwnerId = dal.AddOwner(owner);
             }
 
 
@@ -187,7 +205,7 @@ namespace Service
             }
             else if (name == "Землі промисловості, транспорту, зв'язку, енергетики, оборони та іншого призначення")
             {
-                purposes = dal.GetPurposes().Where(p => 
+                purposes = dal.GetPurposes().Where(p =>
                    p.Code.Substring(0, 2) == "11"
                 || p.Code.Substring(0, 2) == "12"
                 || p.Code.Substring(0, 2) == "13"
@@ -203,12 +221,12 @@ namespace Service
                     || p.Code.Substring(0, 2) == "19");
             }
 
-                       
+
             if (purposes == null) return null;
 
             foreach (var item in purposes)
             {
-                purposeDTOs.Add(new PurposeDTO() { Id = item.Id, Name = item.Name, Code= item.Code });
+                purposeDTOs.Add(new PurposeDTO() { Id = item.Id, Name = item.Name, Code = item.Code });
             }
             return purposeDTOs.ToArray();
         }
