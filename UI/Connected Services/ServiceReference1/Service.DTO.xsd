@@ -78,6 +78,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="JuridicalIndividualDTO" nillable="true" type="tns:JuridicalIndividualDTO" />
+  <xs:complexType name="PurposeDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PurposeDTO" nillable="true" type="tns:PurposeDTO" />
+  <xs:complexType name="SoilDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AgroGroupCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoilDTO" nillable="true" type="tns:SoilDTO" />
   <xs:complexType name="LandCategoryDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
@@ -103,15 +121,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSoilDTO" nillable="true" type="tns:ArrayOfSoilDTO" />
-  <xs:complexType name="SoilDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AgroGroupCode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="SoilDTO" nillable="true" type="tns:SoilDTO" />
   <xs:complexType name="ArrayOfOwnershipTypeDTO">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="OwnershipTypeDTO" nillable="true" type="tns:OwnershipTypeDTO" />
@@ -131,13 +140,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPurposeDTO" nillable="true" type="tns:ArrayOfPurposeDTO" />
-  <xs:complexType name="PurposeDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PurposeDTO" nillable="true" type="tns:PurposeDTO" />
 </xs:schema>

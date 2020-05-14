@@ -13,6 +13,54 @@
   <wsdl:message name="ILandService_AddLandLot_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddLandLotResponse" />
   </wsdl:message>
+  <wsdl:message name="ILandService_GetPurposeById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurposeById" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetPurposeById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurposeByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetExploitationTypeById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExploitationTypeById" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetExploitationTypeById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExploitationTypeByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetSoilById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSoilById" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetSoilById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSoilByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetMonetaryValuationById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMonetaryValuationById" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetMonetaryValuationById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMonetaryValuationByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetStateRegistrationInfoById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStateRegistrationInfoById" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetStateRegistrationInfoById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStateRegistrationInfoByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetOwnerByIdJ_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOwnerByIdJ" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetOwnerByIdJ_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOwnerByIdJResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetOwnerByIdP_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOwnerByIdP" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetOwnerByIdP_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOwnerByIdPResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLocationById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationById" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLocationById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="ILandService_GetLandCategoryById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLandCategoryById" />
   </wsdl:message>
@@ -54,6 +102,38 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILandService/AddLandLot" message="tns:ILandService_AddLandLot_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILandService/AddLandLotResponse" message="tns:ILandService_AddLandLot_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetPurposeById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetPurposeById" message="tns:ILandService_GetPurposeById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetPurposeByIdResponse" message="tns:ILandService_GetPurposeById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExploitationTypeById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetExploitationTypeById" message="tns:ILandService_GetExploitationTypeById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetExploitationTypeByIdResponse" message="tns:ILandService_GetExploitationTypeById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSoilById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetSoilById" message="tns:ILandService_GetSoilById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetSoilByIdResponse" message="tns:ILandService_GetSoilById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMonetaryValuationById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetMonetaryValuationById" message="tns:ILandService_GetMonetaryValuationById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetMonetaryValuationByIdResponse" message="tns:ILandService_GetMonetaryValuationById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStateRegistrationInfoById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetStateRegistrationInfoById" message="tns:ILandService_GetStateRegistrationInfoById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetStateRegistrationInfoByIdResponse" message="tns:ILandService_GetStateRegistrationInfoById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOwnerByIdJ">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetOwnerByIdJ" message="tns:ILandService_GetOwnerByIdJ_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetOwnerByIdJResponse" message="tns:ILandService_GetOwnerByIdJ_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOwnerByIdP">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetOwnerByIdP" message="tns:ILandService_GetOwnerByIdP_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetOwnerByIdPResponse" message="tns:ILandService_GetOwnerByIdP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetLocationById" message="tns:ILandService_GetLocationById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetLocationByIdResponse" message="tns:ILandService_GetLocationById_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetLandCategoryById">
       <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetLandCategoryById" message="tns:ILandService_GetLandCategoryById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetLandCategoryByIdResponse" message="tns:ILandService_GetLandCategoryById_OutputMessage" />
@@ -83,6 +163,78 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="AddLandLot">
       <soap:operation soapAction="http://tempuri.org/ILandService/AddLandLot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurposeById">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetPurposeById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExploitationTypeById">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetExploitationTypeById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSoilById">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetSoilById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMonetaryValuationById">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetMonetaryValuationById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStateRegistrationInfoById">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetStateRegistrationInfoById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOwnerByIdJ">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetOwnerByIdJ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOwnerByIdP">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetOwnerByIdP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationById">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetLocationById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

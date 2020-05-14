@@ -111,19 +111,37 @@
     <None Include="Connected Services\ServiceReference1\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.ExploitationTypeDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.JuridicalIndividualDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.LandCategoryDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.LandLotDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.LocationDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.MonetaryValuationDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.OwnershipTypeDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.PhysicalIndividualDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.PurposeDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.SoilDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\UI.ServiceReference1.StateRegistrationInfoDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="packages.config" />

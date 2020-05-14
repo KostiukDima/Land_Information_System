@@ -29,6 +29,7 @@
                 Додати ділянку
             </Button>
             <Button
+                Name="FindLandLotBtn" Click="FindLandLotBtn_Click"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
             ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
                 Пошук ділянки
@@ -36,7 +37,7 @@
 
         </StackPanel>
 
-        <Grid Name="GridFind" Grid.Column="1" Margin="10">
+        <Grid Name="GridFind" Grid.Column="1" Margin="10" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15*"/>
                 <ColumnDefinition Width="*"/>
@@ -131,13 +132,7 @@
                     >Форма власності</RadioButton>
             </Grid>
 
-            <ListBox Name="ListBoxFindLand"  Grid.Row="2">
-                
-            </ListBox>
-
-
-
-
+            <ListBox Name="ListBoxFindLand"  Grid.Row="2" MouseDoubleClick="ListBoxFindLand_MouseDoubleClick"/>
 
 
         </Grid>
@@ -468,5 +463,237 @@
                 Додати ділянку
             </Button>
         </Grid>
+
+        <Grid  Name="GridInfo" Grid.Column="1" Margin="10" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                
+
+
+            </Grid.RowDefinitions>
+
+            <materialDesign:ColorZone
+                Mode="PrimaryDark"
+                MinHeight="25"
+                CornerRadius="3"
+                Grid.ColumnSpan="2"
+                Margin="2">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FontSize="15"
+                    >
+                    Загальні відомості про земельну ділянку
+                </TextBlock>
+            </materialDesign:ColorZone>
+        
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="1" Text="Кадастровий номер" />  
+            
+            <TextBlock Margin="0,0,10,0" Name="GridInfoCadastralNumber"                                  
+            VerticalAlignment="Center" Grid.Row="1"  Grid.Column="1"/>
+
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="2" Text="Площа"/>
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoArea" 
+            VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" />
+
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="3" Text="Категорія земель" />
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoLandCategory" 
+            VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" />
+
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="4" Text="Цільове призначення" />
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoPurpose" 
+            VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" />
+
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="5" Text="Вид використання земельної ділянки"/>
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoExploitationType" 
+            VerticalAlignment="Center" Grid.Row="5" Grid.Column="1" />
+
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="6" Text="Грунти"/>
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoSoils" 
+            VerticalAlignment="Center" Grid.Row="6" Grid.Column="1" />
+
+            <materialDesign:ColorZone
+                Mode="PrimaryDark"
+                MinHeight="25"
+                CornerRadius="3"
+                Grid.Row="7"                
+                Margin="2"
+                Grid.ColumnSpan="2">                
+                <TextBlock
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FontSize="15"
+                    >
+                    Розташування
+                </TextBlock>
+            </materialDesign:ColorZone>
+
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="8" Text="Область"/>
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoLocationRegion" 
+            VerticalAlignment="Center" Grid.Row="8" Grid.Column="1" />
+
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="9" Text="Район"/>
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoLocationDistrict" 
+            VerticalAlignment="Center" Grid.Row="9" Grid.Column="1" />
+
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="10" Text="Населенний пункт"/>
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoLocationSettlement"  
+            VerticalAlignment="Center" Grid.Row="10" Grid.Column="1" />
+
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="11" Text="Вулиця"/>
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoLocationStreet"
+            VerticalAlignment="Center" Grid.Row="11" Grid.Column="1" />
+
+            <materialDesign:ColorZone
+                Mode="PrimaryDark"
+                MinHeight="25"
+                Grid.ColumnSpan="2"
+                CornerRadius="3"
+                Grid.Row="12"                
+                Margin="2">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FontSize="15"
+                    >
+                    Інформація про власника
+                </TextBlock>
+            </materialDesign:ColorZone>
+
+            <ListBox
+                Name="GridInfoListBox"
+                Grid.ColumnSpan="2"                
+                Grid.Row="13"
+                Grid.RowSpan="2">                
+            </ListBox>
+
+            <materialDesign:ColorZone
+                Mode="PrimaryDark"
+                MinHeight="25"
+                CornerRadius="3"
+                Grid.Row="15"
+                Grid.ColumnSpan="2"
+                Margin="2">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FontSize="15"
+                    >
+                    Інформація про грошову оцінку
+                </TextBlock>
+            </materialDesign:ColorZone>
+
+
+
+
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="16" Text="Коефіцієнт Km"/>
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoMonetaryValuationKm"
+            VerticalAlignment="Center" Grid.Row="16" Grid.Column="1" />
+           
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="17"  Text="Коефіцієнт Kf"/>
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoMonetaryValuationKf"
+            VerticalAlignment="Center" Grid.Row="17" Grid.Column="1" />
+            
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="18" Text="Грошова оцінка"/>
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoMonetaryValuationValue"
+            VerticalAlignment="Center" Grid.Row="18" Grid.Column="1" />
+
+            <materialDesign:ColorZone
+                Mode="PrimaryDark"
+                MinHeight="25"
+                CornerRadius="3"
+                Grid.Row="19"
+                Grid.ColumnSpan="2"
+                Margin="2">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FontSize="15"
+                    >
+                    Інформація про державну реєстрацію
+                </TextBlock>
+            </materialDesign:ColorZone>
+
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="20" Text="Орган який зареєстрував земельну ділянку" />
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoRegistrationInfoAgency"
+            VerticalAlignment="Center" Grid.Row="20" Grid.Column="1" />
+
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="21" Text="Інформація про документацію" />
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoRegistrationInfoTechnicalDocumentation"
+            VerticalAlignment="Center" Grid.Row="21" Grid.Column="1" />
+
+            <TextBlock Margin="0,0,10,0"                  
+            VerticalAlignment="Center" Grid.Row="22" Text="Дата реєстрації"/>
+
+            <TextBlock Margin="0,0,10,0" Name="GridInfoRegistrationInfoDate"
+            VerticalAlignment="Center" Grid.Row="22" Grid.Column="1" />
+
+            <Button
+                Grid.Row="23"
+                Grid.ColumnSpan="2"
+                Name="GridInfoBtnClose"
+                Click="GridInfoBtnClose_Click"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                >
+                Закрити
+            </Button>
+        </Grid>
+
     </Grid>
 </Window>

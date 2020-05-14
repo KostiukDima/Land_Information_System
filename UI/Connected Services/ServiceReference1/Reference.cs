@@ -810,12 +810,18 @@ namespace UI.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="LandCategoryDTO", Namespace="http://schemas.datacontract.org/2004/07/Service.DTO")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PurposeDTO", Namespace="http://schemas.datacontract.org/2004/07/Service.DTO")]
     [System.SerializableAttribute()]
-    public partial class LandCategoryDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class PurposeDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FullNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
@@ -830,6 +836,32 @@ namespace UI.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Code {
+            get {
+                return this.CodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
+                    this.CodeField = value;
+                    this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FullName {
+            get {
+                return this.FullNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FullNameField, value) != true)) {
+                    this.FullNameField = value;
+                    this.RaisePropertyChanged("FullName");
+                }
             }
         }
         
@@ -964,6 +996,67 @@ namespace UI.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LandCategoryDTO", Namespace="http://schemas.datacontract.org/2004/07/Service.DTO")]
+    [System.SerializableAttribute()]
+    public partial class LandCategoryDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="OwnershipTypeDTO", Namespace="http://schemas.datacontract.org/2004/07/Service.DTO")]
     [System.SerializableAttribute()]
     public partial class OwnershipTypeDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1023,99 +1116,6 @@ namespace UI.ServiceReference1 {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PurposeDTO", Namespace="http://schemas.datacontract.org/2004/07/Service.DTO")]
-    [System.SerializableAttribute()]
-    public partial class PurposeDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FullNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Code {
-            get {
-                return this.CodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
-                    this.CodeField = value;
-                    this.RaisePropertyChanged("Code");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FullName {
-            get {
-                return this.FullNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FullNameField, value) != true)) {
-                    this.FullNameField = value;
-                    this.RaisePropertyChanged("FullName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ILandService")]
     public interface ILandService {
@@ -1125,6 +1125,54 @@ namespace UI.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/AddLandLot", ReplyAction="http://tempuri.org/ILandService/AddLandLotResponse")]
         System.Threading.Tasks.Task AddLandLotAsync(UI.ServiceReference1.LandLotDTO landLotDTO, UI.ServiceReference1.ExploitationTypeDTO exploitationTypeDTO, UI.ServiceReference1.LocationDTO locationDTO, UI.ServiceReference1.MonetaryValuationDTO monetaryValuationDTO, UI.ServiceReference1.StateRegistrationInfoDTO stateRegistrationInfoDTO, UI.ServiceReference1.PhysicalIndividualDTO[] physicalIndividualDTOs, UI.ServiceReference1.JuridicalIndividualDTO juridicalIndividualDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetPurposeById", ReplyAction="http://tempuri.org/ILandService/GetPurposeByIdResponse")]
+        UI.ServiceReference1.PurposeDTO GetPurposeById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetPurposeById", ReplyAction="http://tempuri.org/ILandService/GetPurposeByIdResponse")]
+        System.Threading.Tasks.Task<UI.ServiceReference1.PurposeDTO> GetPurposeByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetExploitationTypeById", ReplyAction="http://tempuri.org/ILandService/GetExploitationTypeByIdResponse")]
+        UI.ServiceReference1.ExploitationTypeDTO GetExploitationTypeById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetExploitationTypeById", ReplyAction="http://tempuri.org/ILandService/GetExploitationTypeByIdResponse")]
+        System.Threading.Tasks.Task<UI.ServiceReference1.ExploitationTypeDTO> GetExploitationTypeByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetSoilById", ReplyAction="http://tempuri.org/ILandService/GetSoilByIdResponse")]
+        UI.ServiceReference1.SoilDTO GetSoilById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetSoilById", ReplyAction="http://tempuri.org/ILandService/GetSoilByIdResponse")]
+        System.Threading.Tasks.Task<UI.ServiceReference1.SoilDTO> GetSoilByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetMonetaryValuationById", ReplyAction="http://tempuri.org/ILandService/GetMonetaryValuationByIdResponse")]
+        UI.ServiceReference1.MonetaryValuationDTO GetMonetaryValuationById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetMonetaryValuationById", ReplyAction="http://tempuri.org/ILandService/GetMonetaryValuationByIdResponse")]
+        System.Threading.Tasks.Task<UI.ServiceReference1.MonetaryValuationDTO> GetMonetaryValuationByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetStateRegistrationInfoById", ReplyAction="http://tempuri.org/ILandService/GetStateRegistrationInfoByIdResponse")]
+        UI.ServiceReference1.StateRegistrationInfoDTO GetStateRegistrationInfoById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetStateRegistrationInfoById", ReplyAction="http://tempuri.org/ILandService/GetStateRegistrationInfoByIdResponse")]
+        System.Threading.Tasks.Task<UI.ServiceReference1.StateRegistrationInfoDTO> GetStateRegistrationInfoByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetOwnerByIdJ", ReplyAction="http://tempuri.org/ILandService/GetOwnerByIdJResponse")]
+        UI.ServiceReference1.JuridicalIndividualDTO GetOwnerByIdJ(int landlotid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetOwnerByIdJ", ReplyAction="http://tempuri.org/ILandService/GetOwnerByIdJResponse")]
+        System.Threading.Tasks.Task<UI.ServiceReference1.JuridicalIndividualDTO> GetOwnerByIdJAsync(int landlotid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetOwnerByIdP", ReplyAction="http://tempuri.org/ILandService/GetOwnerByIdPResponse")]
+        UI.ServiceReference1.PhysicalIndividualDTO[] GetOwnerByIdP(int landlotid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetOwnerByIdP", ReplyAction="http://tempuri.org/ILandService/GetOwnerByIdPResponse")]
+        System.Threading.Tasks.Task<UI.ServiceReference1.PhysicalIndividualDTO[]> GetOwnerByIdPAsync(int landlotid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetLocationById", ReplyAction="http://tempuri.org/ILandService/GetLocationByIdResponse")]
+        UI.ServiceReference1.LocationDTO GetLocationById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetLocationById", ReplyAction="http://tempuri.org/ILandService/GetLocationByIdResponse")]
+        System.Threading.Tasks.Task<UI.ServiceReference1.LocationDTO> GetLocationByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetLandCategoryById", ReplyAction="http://tempuri.org/ILandService/GetLandCategoryByIdResponse")]
         UI.ServiceReference1.LandCategoryDTO GetLandCategoryById(int id);
@@ -1196,6 +1244,70 @@ namespace UI.ServiceReference1 {
         
         public System.Threading.Tasks.Task AddLandLotAsync(UI.ServiceReference1.LandLotDTO landLotDTO, UI.ServiceReference1.ExploitationTypeDTO exploitationTypeDTO, UI.ServiceReference1.LocationDTO locationDTO, UI.ServiceReference1.MonetaryValuationDTO monetaryValuationDTO, UI.ServiceReference1.StateRegistrationInfoDTO stateRegistrationInfoDTO, UI.ServiceReference1.PhysicalIndividualDTO[] physicalIndividualDTOs, UI.ServiceReference1.JuridicalIndividualDTO juridicalIndividualDTO) {
             return base.Channel.AddLandLotAsync(landLotDTO, exploitationTypeDTO, locationDTO, monetaryValuationDTO, stateRegistrationInfoDTO, physicalIndividualDTOs, juridicalIndividualDTO);
+        }
+        
+        public UI.ServiceReference1.PurposeDTO GetPurposeById(int id) {
+            return base.Channel.GetPurposeById(id);
+        }
+        
+        public System.Threading.Tasks.Task<UI.ServiceReference1.PurposeDTO> GetPurposeByIdAsync(int id) {
+            return base.Channel.GetPurposeByIdAsync(id);
+        }
+        
+        public UI.ServiceReference1.ExploitationTypeDTO GetExploitationTypeById(int id) {
+            return base.Channel.GetExploitationTypeById(id);
+        }
+        
+        public System.Threading.Tasks.Task<UI.ServiceReference1.ExploitationTypeDTO> GetExploitationTypeByIdAsync(int id) {
+            return base.Channel.GetExploitationTypeByIdAsync(id);
+        }
+        
+        public UI.ServiceReference1.SoilDTO GetSoilById(int id) {
+            return base.Channel.GetSoilById(id);
+        }
+        
+        public System.Threading.Tasks.Task<UI.ServiceReference1.SoilDTO> GetSoilByIdAsync(int id) {
+            return base.Channel.GetSoilByIdAsync(id);
+        }
+        
+        public UI.ServiceReference1.MonetaryValuationDTO GetMonetaryValuationById(int id) {
+            return base.Channel.GetMonetaryValuationById(id);
+        }
+        
+        public System.Threading.Tasks.Task<UI.ServiceReference1.MonetaryValuationDTO> GetMonetaryValuationByIdAsync(int id) {
+            return base.Channel.GetMonetaryValuationByIdAsync(id);
+        }
+        
+        public UI.ServiceReference1.StateRegistrationInfoDTO GetStateRegistrationInfoById(int id) {
+            return base.Channel.GetStateRegistrationInfoById(id);
+        }
+        
+        public System.Threading.Tasks.Task<UI.ServiceReference1.StateRegistrationInfoDTO> GetStateRegistrationInfoByIdAsync(int id) {
+            return base.Channel.GetStateRegistrationInfoByIdAsync(id);
+        }
+        
+        public UI.ServiceReference1.JuridicalIndividualDTO GetOwnerByIdJ(int landlotid) {
+            return base.Channel.GetOwnerByIdJ(landlotid);
+        }
+        
+        public System.Threading.Tasks.Task<UI.ServiceReference1.JuridicalIndividualDTO> GetOwnerByIdJAsync(int landlotid) {
+            return base.Channel.GetOwnerByIdJAsync(landlotid);
+        }
+        
+        public UI.ServiceReference1.PhysicalIndividualDTO[] GetOwnerByIdP(int landlotid) {
+            return base.Channel.GetOwnerByIdP(landlotid);
+        }
+        
+        public System.Threading.Tasks.Task<UI.ServiceReference1.PhysicalIndividualDTO[]> GetOwnerByIdPAsync(int landlotid) {
+            return base.Channel.GetOwnerByIdPAsync(landlotid);
+        }
+        
+        public UI.ServiceReference1.LocationDTO GetLocationById(int id) {
+            return base.Channel.GetLocationById(id);
+        }
+        
+        public System.Threading.Tasks.Task<UI.ServiceReference1.LocationDTO> GetLocationByIdAsync(int id) {
+            return base.Channel.GetLocationByIdAsync(id);
         }
         
         public UI.ServiceReference1.LandCategoryDTO GetLandCategoryById(int id) {

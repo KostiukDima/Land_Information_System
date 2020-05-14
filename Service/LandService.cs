@@ -273,6 +273,112 @@ namespace Service
 
             return new LandCategoryDTO() { Name = landCategory.Name, Id = landCategory.Id };
         }
+
+        public PurposeDTO GetPurposeById(int id)
+        {
+            Purpose purpose = dal.GetPurposes().FirstOrDefault(l => l.Id == id);
+
+            if (purpose == null) return null;
+
+            return new PurposeDTO() { Name = purpose.Name, Id = purpose.Id, Code = purpose.Code };
+        }
+
+        public ExploitationTypeDTO GetExploitationTypeById(int id)
+        {
+            ExploitationType exploitationType = dal.GetExploitationTypeById(id);
+
+            if (exploitationType == null) return null;
+
+            return new ExploitationTypeDTO() { Name = exploitationType.Name, Id = exploitationType.Id };
+        }
+
+        public SoilDTO GetSoilById(int id)
+        {
+            Soil soil = dal.GetSoils().FirstOrDefault(l => l.Id == id);
+
+            if (soil == null) return null;
+
+            return new SoilDTO() { Name = soil.Name, Id = soil.Id, AgroGroupCode = soil.AgroGroupCode };
+        }
+        public MonetaryValuationDTO GetMonetaryValuationById(int id)
+        {
+            MonetaryValuation monetaryValuation = dal.GetMonetaryValuationById(id);
+
+            if (monetaryValuation == null) return null;
+
+            return new MonetaryValuationDTO() { Kf = monetaryValuation.Kf, Km = monetaryValuation.Km, Value = monetaryValuation.Value, Id = monetaryValuation.Id };
+        }
+        public StateRegistrationInfoDTO GetStateRegistrationInfoById(int id)
+        {
+            StateRegistrationInfo stateRegistrationInfo = dal.GetStateRegistrationInfoById(id);
+
+            if (stateRegistrationInfo == null) return null;
+
+            return new StateRegistrationInfoDTO()
+            {
+                RegistrationAgency = stateRegistrationInfo.RegistrationAgency,
+                TechnicalDocumentation = stateRegistrationInfo.TechnicalDocumentation,
+                DateTime = stateRegistrationInfo.DateTime
+            };
+        }
+
+        public JuridicalIndividualDTO GetOwnerByIdJ(int landlotid)
+        {
+            JuridicalIndividual juridical = dal.GetOwnerByIdJ(landlotid);
+
+            if (juridical == null) return null;
+
+            return new JuridicalIndividualDTO()
+            {
+                Id = juridical.Id,
+                Name = juridical.Name,
+                EDRPOUcode = juridical.EDRPOUcode
+            };
+
+        }
+
+        public PhysicalIndividualDTO[] GetOwnerByIdP(int landlotid)
+        {
+            IEnumerable<PhysicalIndividual> physicalIndividuals = dal.GetOwnerByIdP(landlotid);
+
+            if (physicalIndividuals == null) return null;
+            if (physicalIndividuals.Count() == 0) return null;
+
+
+            List<PhysicalIndividualDTO> physicalIndividualDTOs = new List<PhysicalIndividualDTO>();
+
+            foreach (var item in physicalIndividuals)
+            {
+                physicalIndividualDTOs.Add(new PhysicalIndividualDTO()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Surname = item.Surname,
+                    MiddleName = item.MiddleName,
+                    DateOfBirth = item.DateOfBirth
+                }
+                );
+            }
+
+            return physicalIndividualDTOs.ToArray();
+        }
+
+
+        public LocationDTO GetLocationById(int id)
+        {
+            Location location = dal.GetLocationById(id);
+
+            if (location == null) return null;
+
+            return new LocationDTO()
+            {
+                Id = location.Id,
+                District = location.District,
+                Region = location.Region,
+                Settlement = location.Settlement,
+                Street = location.Street
+            };
+        }
     }
 
 

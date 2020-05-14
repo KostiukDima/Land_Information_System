@@ -83,6 +83,34 @@ namespace DAL
             return l.Id;
         }
 
+        public Location GetLocationById(int id)
+        {
+            return context.Locations.FirstOrDefault(l => l.Id == id);
+        }
+        public MonetaryValuation GetMonetaryValuationById(int id)
+        {
+            return context.MonetaryValuations.FirstOrDefault(l => l.Id == id);
+        }
+        public StateRegistrationInfo GetStateRegistrationInfoById(int id)
+        {
+            return context.StateRegistrationInfos.FirstOrDefault(l => l.Id == id);
+        }
+
+        public ExploitationType GetExploitationTypeById(int id)
+        {
+            return context.ExploitationTypes.FirstOrDefault(l => l.Id == id);
+        }
+
+        public JuridicalIndividual GetOwnerByIdJ(int id)
+        {
+            return context.LandLots.FirstOrDefault(l => l.Id == id).Owner.JuridicalIndividual;
+        }
+
+        public IEnumerable<PhysicalIndividual> GetOwnerByIdP(int id)
+        {
+            return context.LandLots.FirstOrDefault(l => l.Id == id).Owner.PhysicalIndividuals.ToList();
+        }
+
         public IEnumerable<LandCategory> GetLandCategories()
         {
             return context.LandCategories.ToList();

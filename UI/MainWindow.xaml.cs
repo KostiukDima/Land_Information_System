@@ -24,7 +24,7 @@ namespace UI
         LandServiceClient proxy;
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
             proxy = new LandServiceClient();
             PIRadioBtn.IsChecked = true;
             GridFindRadioBtnCadasNum.IsChecked = true;
@@ -36,7 +36,7 @@ namespace UI
 
             LandCategoryDTO selectedItem = (LandCategoryDTO)GridAddComBoxLandCategory.SelectedItem;
 
-            if (selectedItem == null) return;  
+            if (selectedItem == null) return;
 
             foreach (var item in proxy.GetPurposes(selectedItem.Name))
             {
@@ -57,25 +57,32 @@ namespace UI
         private void AddLandLotBtn_Click(object sender, RoutedEventArgs e)
         {
             GridAdd.Visibility = Visibility.Visible;
+            GridFind.Visibility = Visibility.Collapsed;
+            GridInfo.Visibility = Visibility.Collapsed;
+
 
             GridAddComBoxSoils.DisplayMemberPath = "FullName";
             GridAddComBoxPurpose.DisplayMemberPath = "FullName";
             GridAddComBoxLandCategory.DisplayMemberPath = "Name";
             GridAddComBoxOwnershipType.DisplayMemberPath = "Name";
 
-            foreach (var item in proxy.GetLandCategories())
-            {
-                GridAddComBoxLandCategory.Items.Add(item);
-            }
+            if (GridAddComBoxLandCategory.Items.Count == 0)
+                foreach (var item in proxy.GetLandCategories())
+                {
+                    GridAddComBoxLandCategory.Items.Add(item);
+                }
 
-            foreach (var item in proxy.GetOwnershipTypes())
-            {
-                GridAddComBoxOwnershipType.Items.Add(item);
-            }
-            foreach (var item in proxy.GetSoils())
-            {
-                GridAddComBoxSoils.Items.Add(item);
-            }
+            if (GridAddComBoxOwnershipType.Items.Count == 0)
+                foreach (var item in proxy.GetOwnershipTypes())
+                {
+                    GridAddComBoxOwnershipType.Items.Add(item);
+                }
+
+            if (GridAddComBoxSoils.Items.Count == 0)
+                foreach (var item in proxy.GetSoils())
+                {
+                    GridAddComBoxSoils.Items.Add(item);
+                }
         }
 
         private void JIRadioBtn_Checked(object sender, RoutedEventArgs e)
@@ -98,6 +105,26 @@ namespace UI
             GridAddJIEDRPOUcode.Visibility = Visibility.Collapsed;
         }
 
+        private void GridInfoJIRadioBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            GridAddPIName.Visibility = Visibility.Collapsed;
+            GridAddPISurname.Visibility = Visibility.Collapsed;
+            GridAddPIMiddleName.Visibility = Visibility.Collapsed;
+            GridAddPIBirdDate.Visibility = Visibility.Collapsed;
+            GridAddJIName.Visibility = Visibility.Visible;
+            GridAddJIEDRPOUcode.Visibility = Visibility.Visible;
+        }
+
+        private void GridInfoPIRadioBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            GridAddPIName.Visibility = Visibility.Visible;
+            GridAddPISurname.Visibility = Visibility.Visible;
+            GridAddPIMiddleName.Visibility = Visibility.Visible;
+            GridAddPIBirdDate.Visibility = Visibility.Visible;
+            GridAddJIName.Visibility = Visibility.Collapsed;
+            GridAddJIEDRPOUcode.Visibility = Visibility.Collapsed;
+        }
+
         private void GridAddBtnAddLandLot_Click(object sender, RoutedEventArgs e)
         {
 
@@ -105,7 +132,7 @@ namespace UI
             OwnershipTypeDTO selectedItemOwnershipType = (OwnershipTypeDTO)GridAddComBoxOwnershipType.SelectedItem;
             PurposeDTO selectedItemPurpose = (PurposeDTO)GridAddComBoxPurpose.SelectedItem;
             SoilDTO selectedItemSoil = (SoilDTO)GridAddComBoxSoils.SelectedItem;
-                                                         
+
             LandLotDTO landLotDTO = new LandLotDTO()
             {
                 CadastralNumber = GridAddCadastralNumber.Text,
@@ -152,11 +179,11 @@ namespace UI
                 DateTime = GridAddRegistrationInfoDate.SelectedDate.Value
             };
 
-            if(PIRadioBtn.IsChecked == true)
+            if (PIRadioBtn.IsChecked == true)
             {
                 PhysicalIndividualDTO physicalIndividualDTO = new PhysicalIndividualDTO()
-                {   
-                    Id=-1,
+                {
+                    Id = -1,
                     Name = GridAddPIName.Text,
                     Surname = GridAddPISurname.Text,
                     MiddleName = GridAddPIMiddleName.Text,
@@ -170,7 +197,7 @@ namespace UI
                     locationDTO,
                     monetaryValuationDTO,
                     stateRegistrationInfoDTO,
-                    new PhysicalIndividualDTO[] {physicalIndividualDTO},
+                    new PhysicalIndividualDTO[] { physicalIndividualDTO },
                     null
                 );
             }
@@ -180,7 +207,7 @@ namespace UI
                 {
                     EDRPOUcode = GridAddJIEDRPOUcode.Text,
                     Name = GridAddJIName.Text
-                  
+
                 };
 
                 proxy.AddLandLot
@@ -194,7 +221,7 @@ namespace UI
                   juridicalIndividualDTO
               );
             }
-                
+
         }
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
@@ -216,7 +243,7 @@ namespace UI
             ListBoxFindLand.Items.Clear();
 
             if (landLotDTOs == null)
-                ListBoxFindLand.Items.Add(new Label() {Content = "Ділянок не знайдено", HorizontalAlignment = HorizontalAlignment.Center } );
+                ListBoxFindLand.Items.Add(new Label() { Content = "Ділянок не знайдено", HorizontalAlignment = HorizontalAlignment.Center });
             else
                 foreach (var item in landLotDTOs)
                 {
@@ -225,8 +252,30 @@ namespace UI
                         Orientation = Orientation.Horizontal
                     };
 
-                    sp.Children.Add(new Label() { Content = item.CadastralNumber });
+                    sp.Children.Add(new Label() { Content = item.CadastralNumber, });
                     sp.Children.Add(new Label() { Content = proxy.GetLandCategoryById(item.Id).Name });
+
+                    LocationDTO location = proxy.GetLocationById(item.Id);
+                    sp.Children.Add(new Label() { Content = location.District + " " + location.Settlement });
+
+                    //MessageBox.Show(item.Id.ToString());
+                    //PhysicalIndividualDTO[] physicalIndividuals = proxy.GetOwnerByIdP(item.Id);
+                    //JuridicalIndividualDTO juridicalIndividual = proxy.GetOwnerByIdJ(item.Id);
+
+                    //if(physicalIndividuals!=null)
+                    //{
+                    //    foreach (var i in physicalIndividuals)
+                    //    {
+                    //        sp.Children.Add(new Label() { Content = i.Name+" "+i.Surname });
+
+                    //    }
+                    //}
+                    //else if(juridicalIndividual!=null)
+                    //{
+                    //    sp.Children.Add(new Label() { Content = juridicalIndividual.Name });
+                    //}
+
+
 
                     sp.Tag = item;
 
@@ -247,5 +296,64 @@ namespace UI
             //else if(GridFindRadioBtnOwnershipType.IsChecked == true)      
         }
 
+        private void FindLandLotBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GridAdd.Visibility = Visibility.Collapsed;
+            GridFind.Visibility = Visibility.Visible;
+            GridInfo.Visibility = Visibility.Collapsed;
+
+            ListBoxFindLand.Items.Clear();
+            TextFind.Text = "";
+        }
+
+        
+
+        private void ListBoxFindLand_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (ListBoxFindLand.SelectedItem == null) return;
+
+            LandLotDTO landLotDTO = (LandLotDTO)((StackPanel)ListBoxFindLand.SelectedItem).Tag;
+
+            GridFind.Visibility = Visibility.Collapsed;
+
+            GridInfoCadastralNumber.Text = landLotDTO.CadastralNumber;
+            GridInfoArea.Text = landLotDTO.Area.ToString()+"га";
+            GridInfoLandCategory.Text = proxy.GetLandCategoryById(landLotDTO.LandCategoryId).Name;
+            GridInfoPurpose.Text = proxy.GetPurposeById(landLotDTO.PurposeId).FullName;
+            GridInfoExploitationType.Text = proxy.GetExploitationTypeById(landLotDTO.ExploitationTypeId).Name;
+            if (landLotDTO.SoilId != null)
+                GridInfoSoils.Text = proxy.GetSoilById(landLotDTO.SoilId.Value).FullName;
+
+            LocationDTO locationDTO = proxy.GetLocationById(landLotDTO.LocationId);
+            GridInfoLocationRegion.Text = locationDTO.Region;
+            GridInfoLocationDistrict.Text = locationDTO.District;
+            GridInfoLocationSettlement.Text = locationDTO.Settlement;
+            GridInfoLocationStreet.Text = locationDTO.Street;
+
+
+            //GridInfoListBox
+            MonetaryValuationDTO monetaryValuationDTO = proxy.GetMonetaryValuationById(landLotDTO.MonetaryValuationId);
+
+            GridInfoMonetaryValuationKm.Text = monetaryValuationDTO.Km.ToString();
+            GridInfoMonetaryValuationKf.Text = monetaryValuationDTO.Kf.ToString();
+            GridInfoMonetaryValuationValue.Text = monetaryValuationDTO.Value.ToString();
+
+            StateRegistrationInfoDTO infoDTO = proxy.GetStateRegistrationInfoById(landLotDTO.StateRegistrationInfoId);
+
+            GridInfoRegistrationInfoAgency.Text = infoDTO.RegistrationAgency;
+            GridInfoRegistrationInfoTechnicalDocumentation.Text = infoDTO.TechnicalDocumentation;
+            GridInfoRegistrationInfoDate.Text = infoDTO.DateTime.ToShortTimeString();
+
+            GridInfo.Visibility = Visibility.Visible;
+            
+
+        }
+
+        private void GridInfoBtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            GridInfo.Visibility = Visibility.Collapsed;
+            GridInfo.Visibility = Visibility.Collapsed;
+            GridFind.Visibility = Visibility.Visible;
+        }
     }
 }

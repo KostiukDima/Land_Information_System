@@ -24,6 +24,23 @@ namespace Service
 
             );
 
+
+        [OperationContract]
+        PurposeDTO GetPurposeById(int id);
+        [OperationContract]
+        ExploitationTypeDTO GetExploitationTypeById(int id);
+        [OperationContract]
+        SoilDTO GetSoilById(int id);
+        [OperationContract]
+        MonetaryValuationDTO GetMonetaryValuationById(int id);
+        [OperationContract]
+        StateRegistrationInfoDTO GetStateRegistrationInfoById(int id);
+        [OperationContract]
+        JuridicalIndividualDTO GetOwnerByIdJ(int landlotid);
+        [OperationContract]
+        PhysicalIndividualDTO[] GetOwnerByIdP(int landlotid);
+        [OperationContract]
+        LocationDTO GetLocationById(int id);
         [OperationContract]
         LandCategoryDTO GetLandCategoryById(int id);
         [OperationContract]
