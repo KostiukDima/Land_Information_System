@@ -22,6 +22,7 @@ namespace UI
     public partial class MainWindow : Window
     {
         LandServiceClient proxy;
+        int SelectedLandLotDTOId;
         public MainWindow()
         {
             InitializeComponent();
@@ -83,6 +84,40 @@ namespace UI
                 {
                     GridAddComBoxSoils.Items.Add(item);
                 }
+
+            GridAddCadastralNumber.Text = "";
+            GridAddArea.Text = "";
+            GridAddComBoxLandCategory.SelectedItem = null;
+            GridAddComBoxPurpose.SelectedItem = null;
+            GridAddExploitationType.Text =null;
+            GridAddComBoxSoils.SelectedItem = null;
+
+            
+            GridAddLocationRegion.Text = "";
+            GridAddLocationDistrict.Text = "";
+            GridAddLocationSettlement.Text = "";
+            GridAddLocationStreet.Text = "";
+
+            GridAddMonetaryValuationKm.Text = "";
+            GridAddMonetaryValuationKf.Text = "";
+            GridAddMonetaryValuationValue.Text = "";
+
+            GridAddRegistrationInfoAgency.Text = "";
+            GridAddRegistrationInfoTechnicalDocumentation.Text = "";
+            GridAddRegistrationInfoDate.Text = "";
+
+            GridAddPIName.Text = "";
+            GridAddPISurname.Text = "";
+            GridAddPIMiddleName.Text = "";
+            GridAddPIBirdDate.SelectedDate = null;
+
+
+            GridAddJIEDRPOUcode.Text = "";
+            GridAddJIName.Text = "";
+
+
+
+
         }
 
         private void JIRadioBtn_Checked(object sender, RoutedEventArgs e)
@@ -313,6 +348,7 @@ namespace UI
             if (ListBoxFindLand.SelectedItem == null) return;
 
             LandLotDTO landLotDTO = (LandLotDTO)((StackPanel)ListBoxFindLand.SelectedItem).Tag;
+            SelectedLandLotDTOId = landLotDTO.Id;
 
             GridFind.Visibility = Visibility.Collapsed;
 
@@ -352,8 +388,69 @@ namespace UI
         private void GridInfoBtnClose_Click(object sender, RoutedEventArgs e)
         {
             GridInfo.Visibility = Visibility.Collapsed;
-            GridInfo.Visibility = Visibility.Collapsed;
+            GridAdd.Visibility = Visibility.Collapsed;
             GridFind.Visibility = Visibility.Visible;
+        }
+
+        private void GridInfoBtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            GridInfo.Visibility = Visibility.Collapsed;
+            GridAdd.Visibility = Visibility.Visible;
+            GridFind.Visibility = Visibility.Collapsed;
+
+            LandLotDTO landLotDTO = (LandLotDTO)((StackPanel)ListBoxFindLand.SelectedItem).Tag;
+                     
+
+            GridAddCadastralNumber.Text = landLotDTO.CadastralNumber;
+            GridAddArea.Text = landLotDTO.Area.ToString();
+            GridAddComBoxLandCategory.SelectedItem = proxy.GetLandCategoryById(landLotDTO.LandCategoryId);
+            GridAddComBoxPurpose.SelectedItem = proxy.GetPurposeById(landLotDTO.PurposeId);
+            GridAddExploitationType.Text = proxy.GetExploitationTypeById(landLotDTO.ExploitationTypeId).Name;
+            if (landLotDTO.SoilId != null)
+                GridAddComBoxSoils.SelectedItem = proxy.GetSoilById(landLotDTO.SoilId.Value);
+
+            LocationDTO locationDTO = proxy.GetLocationById(landLotDTO.LocationId);
+            GridAddLocationRegion.Text = locationDTO.Region;
+            GridAddLocationDistrict.Text = locationDTO.District;
+            GridAddLocationSettlement.Text = locationDTO.Settlement;
+            GridAddLocationStreet.Text = locationDTO.Street;
+
+
+            //GridInfoListBox
+            MonetaryValuationDTO monetaryValuationDTO = proxy.GetMonetaryValuationById(landLotDTO.MonetaryValuationId);
+
+            GridAddMonetaryValuationKm.Text = monetaryValuationDTO.Km.ToString();
+            GridAddMonetaryValuationKf.Text = monetaryValuationDTO.Kf.ToString();
+            GridAddMonetaryValuationValue.Text = monetaryValuationDTO.Value.ToString();
+                     
+            StateRegistrationInfoDTO infoDTO = proxy.GetStateRegistrationInfoById(landLotDTO.StateRegistrationInfoId);
+
+            GridAddRegistrationInfoAgency.Text = infoDTO.RegistrationAgency;
+            GridAddRegistrationInfoTechnicalDocumentation.Text = infoDTO.TechnicalDocumentation;
+            GridAddRegistrationInfoDate.Text = infoDTO.DateTime.ToShortTimeString();
+            
+            
+
+
+
+
+            //
+            //
+            //
+            //
+            //
+            //
+            //GridAddLocationRegion
+            //GridAddLocationDistrict
+            //GridAddLocationSettlement
+            //GridAddLocationStreet
+            //GridAddComBoxOwnershipType
+            //GridAddMonetaryValuationKm
+            //GridAddMonetaryValuationKf
+            //GridAddMonetaryValuationValue
+            //GridAddRegistrationInfoAgency
+            //GridAddRegistrationInfoDate
+            //GridAddRegistrationInfoTechnicalDocumentation
         }
     }
 }
