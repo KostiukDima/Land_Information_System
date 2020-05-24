@@ -11,6 +11,7 @@ using System.Text;
 namespace Service
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class LandService : ILandService
     {
         private static DALClass dal = new DALClass();
@@ -378,6 +379,140 @@ namespace Service
                 Settlement = location.Settlement,
                 Street = location.Street
             };
+        }
+
+
+        public string GetOwnerType(int id)
+        {
+            LandLot landLot   = dal.GetLandLots().FirstOrDefault(l=>l.Id == id);
+
+            if (landLot == null) return null;
+
+            if (landLot.Owner.PhysicalIndividuals.Count > 0)
+                return "PhysicalIndividuals";
+            else if (landLot.Owner.JuridicalIndividualId != null)
+                return "JuridicalIndividual";
+            else
+                return null;
+
+        }
+
+        public OwnershipTypeDTO GetOwnershipTypebyLandLotId(int id)
+        {
+            LandLot landLot = dal.GetLandLots().FirstOrDefault(l => l.Id == id);
+
+            if (landLot == null) return null;
+
+            return new OwnershipTypeDTO()
+            {
+                Id = landLot.OwnershipType.Id,
+                Name = landLot.OwnershipType.Name
+            };
+        }
+
+        public void EditLandLot
+        (
+            LandLotDTO landLotDTO,
+            ExploitationTypeDTO exploitationTypeDTO,
+            LocationDTO locationDTO,
+            MonetaryValuationDTO monetaryValuationDTO,
+            StateRegistrationInfoDTO stateRegistrationInfoDTO,
+            ICollection<PhysicalIndividualDTO> physicalIndividualDTOs,
+            JuridicalIndividualDTO juridicalIndividualDTO
+
+        )
+        {
+
+            LandLot landLot = dal.GetLandLots().FirstOrDefault(l => l.Id == landLotDTO.Id);
+
+            if (landLot == null) return;
+
+            landLot.CadastralNumber = landLotDTO.CadastralNumber;
+            landLot.Area = landLotDTO.Area;
+            landLot.LandCategoryId = landLotDTO.LandCategoryId;
+            landLot.OwnershipTypeId = landLotDTO.OwnershipTypeId;
+            landLot.PurposeId = landLotDTO.PurposeId;
+            landLot.SoilId = landLotDTO.SoilId;
+
+            landLot.Location.District = locationDTO.District;
+            landLot.Location.Region = locationDTO.Region;
+            landLot.Location.Settlement = locationDTO.Settlement;
+            landLot.Location.Street = locationDTO.Street;
+
+            landLot.MonetaryValuation.Value = monetaryValuationDTO.Value;
+            landLot.MonetaryValuation.Kf = monetaryValuationDTO.Kf;
+            landLot.MonetaryValuation.Km = monetaryValuationDTO.Km;
+
+
+
+            landLot.StateRegistrationInfo.RegistrationAgency = stateRegistrationInfoDTO.RegistrationAgency;
+            landLot.StateRegistrationInfo.TechnicalDocumentation = stateRegistrationInfoDTO.TechnicalDocumentation;
+            landLot.StateRegistrationInfo.DateTime = stateRegistrationInfoDTO.DateTime;
+            
+
+            if (dal.GetExploitationTypeByName(exploitationTypeDTO.Name) == null)
+                dal.AddExploitationType(new ExploitationType() { Name = exploitationTypeDTO.Name });
+
+            landLot.ExploitationTypeId = dal.GetExploitationTypeByName(exploitationTypeDTO.Name).Id;
+
+            if (physicalIndividualDTOs != null)
+            {
+                Owner owner = new Owner();
+
+                foreach (var item in physicalIndividualDTOs)
+                {
+                    if (item.Id == -1)
+                        owner.PhysicalIndividuals.Add
+                            (new PhysicalIndividual()
+                            {
+                                Name = item.Name,
+                                Surname = item.Surname,
+                                MiddleName = item.MiddleName,
+                                DateOfBirth = item.DateOfBirth
+                            }
+                            );
+                    else
+                        owner.PhysicalIndividuals.Add
+                        (new PhysicalIndividual()
+                        {
+                            Id = item.Id,
+                            Name = item.Name,
+                            Surname = item.Surname,
+                            MiddleName = item.MiddleName,
+                            DateOfBirth = item.DateOfBirth
+                        }
+                        );
+
+
+
+                }
+                owner.LandLotId = landLot.Id;
+                landLot.OwnerId = dal.AddOwner(owner);
+            }
+            else
+            {
+                Owner owner = new Owner();
+
+                if (null == dal.GetJuridicalIndividual(juridicalIndividualDTO.Name,
+                    juridicalIndividualDTO.EDRPOUcode))
+                    owner.JuridicalIndividualId = dal.AddJuridicalIndividual(new JuridicalIndividual()
+                    {
+                        EDRPOUcode = juridicalIndividualDTO.EDRPOUcode,
+                        Name = juridicalIndividualDTO.Name
+                    });
+                else
+                    owner.JuridicalIndividualId = dal.GetJuridicalIndividual
+                       (juridicalIndividualDTO.Name,
+                           juridicalIndividualDTO.EDRPOUcode).Id;
+
+                owner.LandLotId = landLot.Id;
+                landLot.OwnerId = dal.AddOwner(owner);
+            }
+
+
+
+
+            dal.SaveChanges();
         }
     }
 

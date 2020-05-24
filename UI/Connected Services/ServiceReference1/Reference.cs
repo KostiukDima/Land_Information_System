@@ -1126,6 +1126,12 @@ namespace UI.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/AddLandLot", ReplyAction="http://tempuri.org/ILandService/AddLandLotResponse")]
         System.Threading.Tasks.Task AddLandLotAsync(UI.ServiceReference1.LandLotDTO landLotDTO, UI.ServiceReference1.ExploitationTypeDTO exploitationTypeDTO, UI.ServiceReference1.LocationDTO locationDTO, UI.ServiceReference1.MonetaryValuationDTO monetaryValuationDTO, UI.ServiceReference1.StateRegistrationInfoDTO stateRegistrationInfoDTO, UI.ServiceReference1.PhysicalIndividualDTO[] physicalIndividualDTOs, UI.ServiceReference1.JuridicalIndividualDTO juridicalIndividualDTO);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/EditLandLot", ReplyAction="http://tempuri.org/ILandService/EditLandLotResponse")]
+        void EditLandLot(UI.ServiceReference1.LandLotDTO landLotDTO, UI.ServiceReference1.ExploitationTypeDTO exploitationTypeDTO, UI.ServiceReference1.LocationDTO locationDTO, UI.ServiceReference1.MonetaryValuationDTO monetaryValuationDTO, UI.ServiceReference1.StateRegistrationInfoDTO stateRegistrationInfoDTO, UI.ServiceReference1.PhysicalIndividualDTO[] physicalIndividualDTOs, UI.ServiceReference1.JuridicalIndividualDTO juridicalIndividualDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/EditLandLot", ReplyAction="http://tempuri.org/ILandService/EditLandLotResponse")]
+        System.Threading.Tasks.Task EditLandLotAsync(UI.ServiceReference1.LandLotDTO landLotDTO, UI.ServiceReference1.ExploitationTypeDTO exploitationTypeDTO, UI.ServiceReference1.LocationDTO locationDTO, UI.ServiceReference1.MonetaryValuationDTO monetaryValuationDTO, UI.ServiceReference1.StateRegistrationInfoDTO stateRegistrationInfoDTO, UI.ServiceReference1.PhysicalIndividualDTO[] physicalIndividualDTOs, UI.ServiceReference1.JuridicalIndividualDTO juridicalIndividualDTO);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetPurposeById", ReplyAction="http://tempuri.org/ILandService/GetPurposeByIdResponse")]
         UI.ServiceReference1.PurposeDTO GetPurposeById(int id);
         
@@ -1204,6 +1210,12 @@ namespace UI.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetOwnershipTypes", ReplyAction="http://tempuri.org/ILandService/GetOwnershipTypesResponse")]
         System.Threading.Tasks.Task<UI.ServiceReference1.OwnershipTypeDTO[]> GetOwnershipTypesAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetOwnershipTypebyLandLotId", ReplyAction="http://tempuri.org/ILandService/GetOwnershipTypebyLandLotIdResponse")]
+        UI.ServiceReference1.OwnershipTypeDTO GetOwnershipTypebyLandLotId(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetOwnershipTypebyLandLotId", ReplyAction="http://tempuri.org/ILandService/GetOwnershipTypebyLandLotIdResponse")]
+        System.Threading.Tasks.Task<UI.ServiceReference1.OwnershipTypeDTO> GetOwnershipTypebyLandLotIdAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILandService/GetPurposes", ReplyAction="http://tempuri.org/ILandService/GetPurposesResponse")]
         UI.ServiceReference1.PurposeDTO[] GetPurposes(string name);
         
@@ -1244,6 +1256,14 @@ namespace UI.ServiceReference1 {
         
         public System.Threading.Tasks.Task AddLandLotAsync(UI.ServiceReference1.LandLotDTO landLotDTO, UI.ServiceReference1.ExploitationTypeDTO exploitationTypeDTO, UI.ServiceReference1.LocationDTO locationDTO, UI.ServiceReference1.MonetaryValuationDTO monetaryValuationDTO, UI.ServiceReference1.StateRegistrationInfoDTO stateRegistrationInfoDTO, UI.ServiceReference1.PhysicalIndividualDTO[] physicalIndividualDTOs, UI.ServiceReference1.JuridicalIndividualDTO juridicalIndividualDTO) {
             return base.Channel.AddLandLotAsync(landLotDTO, exploitationTypeDTO, locationDTO, monetaryValuationDTO, stateRegistrationInfoDTO, physicalIndividualDTOs, juridicalIndividualDTO);
+        }
+        
+        public void EditLandLot(UI.ServiceReference1.LandLotDTO landLotDTO, UI.ServiceReference1.ExploitationTypeDTO exploitationTypeDTO, UI.ServiceReference1.LocationDTO locationDTO, UI.ServiceReference1.MonetaryValuationDTO monetaryValuationDTO, UI.ServiceReference1.StateRegistrationInfoDTO stateRegistrationInfoDTO, UI.ServiceReference1.PhysicalIndividualDTO[] physicalIndividualDTOs, UI.ServiceReference1.JuridicalIndividualDTO juridicalIndividualDTO) {
+            base.Channel.EditLandLot(landLotDTO, exploitationTypeDTO, locationDTO, monetaryValuationDTO, stateRegistrationInfoDTO, physicalIndividualDTOs, juridicalIndividualDTO);
+        }
+        
+        public System.Threading.Tasks.Task EditLandLotAsync(UI.ServiceReference1.LandLotDTO landLotDTO, UI.ServiceReference1.ExploitationTypeDTO exploitationTypeDTO, UI.ServiceReference1.LocationDTO locationDTO, UI.ServiceReference1.MonetaryValuationDTO monetaryValuationDTO, UI.ServiceReference1.StateRegistrationInfoDTO stateRegistrationInfoDTO, UI.ServiceReference1.PhysicalIndividualDTO[] physicalIndividualDTOs, UI.ServiceReference1.JuridicalIndividualDTO juridicalIndividualDTO) {
+            return base.Channel.EditLandLotAsync(landLotDTO, exploitationTypeDTO, locationDTO, monetaryValuationDTO, stateRegistrationInfoDTO, physicalIndividualDTOs, juridicalIndividualDTO);
         }
         
         public UI.ServiceReference1.PurposeDTO GetPurposeById(int id) {
@@ -1348,6 +1368,14 @@ namespace UI.ServiceReference1 {
         
         public System.Threading.Tasks.Task<UI.ServiceReference1.OwnershipTypeDTO[]> GetOwnershipTypesAsync() {
             return base.Channel.GetOwnershipTypesAsync();
+        }
+        
+        public UI.ServiceReference1.OwnershipTypeDTO GetOwnershipTypebyLandLotId(int id) {
+            return base.Channel.GetOwnershipTypebyLandLotId(id);
+        }
+        
+        public System.Threading.Tasks.Task<UI.ServiceReference1.OwnershipTypeDTO> GetOwnershipTypebyLandLotIdAsync(int id) {
+            return base.Channel.GetOwnershipTypebyLandLotIdAsync(id);
         }
         
         public UI.ServiceReference1.PurposeDTO[] GetPurposes(string name) {

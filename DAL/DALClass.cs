@@ -16,6 +16,11 @@ namespace DAL
             context = new LandSystemDBModel(); 
         }
 
+        public void SaveChanges()
+        {
+            context.SaveChanges();
+        }
+
         public void AddLandLot(LandLot landLot)
         {
             landLot.Location = context.Locations.FirstOrDefault(l => l.Id == landLot.LocationId);
@@ -103,12 +108,14 @@ namespace DAL
 
         public JuridicalIndividual GetOwnerByIdJ(int id)
         {
-            return context.LandLots.FirstOrDefault(l => l.Id == id).Owner.JuridicalIndividual;
+            int idp = context.LandLots.FirstOrDefault(l => l.Id == id).OwnerId;
+            return context.Owners.FirstOrDefault(l => l.Id == idp).JuridicalIndividual;
         }
 
         public IEnumerable<PhysicalIndividual> GetOwnerByIdP(int id)
         {
-            return context.LandLots.FirstOrDefault(l => l.Id == id).Owner.PhysicalIndividuals.ToList();
+            int idp = context.LandLots.FirstOrDefault(l => l.Id == id).OwnerId;
+                return context.Owners.FirstOrDefault(l => l.Id == idp).PhysicalIndividuals.ToList();
         }
 
         public IEnumerable<LandCategory> GetLandCategories()

@@ -24,7 +24,18 @@ namespace Service
 
             );
 
+        [OperationContract]
+        void EditLandLot
+        (
+            LandLotDTO landLotDTO,
+            ExploitationTypeDTO exploitationTypeDTO,
+            LocationDTO locationDTO,
+            MonetaryValuationDTO monetaryValuationDTO,
+            StateRegistrationInfoDTO stateRegistrationInfoDTO,
+            ICollection<PhysicalIndividualDTO> physicalIndividualDTOs,
+            JuridicalIndividualDTO juridicalIndividualDTO
 
+        );
         [OperationContract]
         PurposeDTO GetPurposeById(int id);
         [OperationContract]
@@ -53,7 +64,9 @@ namespace Service
         
         [OperationContract]
         OwnershipTypeDTO[] GetOwnershipTypes();
-        
+
+        [OperationContract]
+        OwnershipTypeDTO GetOwnershipTypebyLandLotId(int id);
         [OperationContract]
         PurposeDTO[] GetPurposes(string name);
 
