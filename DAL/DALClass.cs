@@ -1,6 +1,7 @@
 ﻿using DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace DAL
         public void AddLandLot(LandLot landLot)
         {
             landLot.Location = context.Locations.FirstOrDefault(l => l.Id == landLot.LocationId);
-
+            //landLot.Owner = context.Owners.FirstOrDefault(l => l.Id == landLot.OwnerId);
             var existing = context.LandLots.FirstOrDefault(ll => ll.CadastralNumber == landLot.CadastralNumber);
 
             if (existing != null) return;
@@ -115,6 +116,7 @@ namespace DAL
         public IEnumerable<PhysicalIndividual> GetOwnerByIdP(int id)
         {
             int idp = context.LandLots.FirstOrDefault(l => l.Id == id).OwnerId;
+            if (context.Owners.FirstOrDefault(l => l.Id == idp).PhysicalIndividuals == null) return null; 
                 return context.Owners.FirstOrDefault(l => l.Id == idp).PhysicalIndividuals.ToList();
         }
 
@@ -166,7 +168,20 @@ namespace DAL
         }
         public JuridicalIndividual GetJuridicalIndividual(string name, string EDRPOUcode)
         {
-            var existing = context.JuridicalIndividuals.FirstOrDefault(j => j.Name == name || j.EDRPOUcode == EDRPOUcode);
+            var existing = context.JuridicalIndividuals.FirstOrDefault(j => j.Name == name && j.EDRPOUcode == EDRPOUcode);
+
+            if (existing == null) return null;
+            else return existing;
+
+        }               
+
+        public PhysicalIndividual GetPhysicalIndividual(string name, string surname, string middleName, DateTime dateOfBirth)
+        {
+            var existing = context.PhysicalIndividuals.FirstOrDefault
+                (p => p.Name == name 
+                && p.Surname == surname
+                && p.MiddleName == middleName
+                && DbFunctions.TruncateTime(p.DateOfBirth) == dateOfBirth.Date);
 
             if (existing == null) return null;
             else return existing;

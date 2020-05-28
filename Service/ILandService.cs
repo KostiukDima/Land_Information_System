@@ -37,6 +37,16 @@ namespace Service
 
         );
         [OperationContract]
+        LandLotDTO[] GetLandLotsbyOwner(string owner);
+        [OperationContract] 
+        LandLotDTO[] GetLandLotsbyOwnershipType(string purpose);
+        [OperationContract]
+        LandLotDTO[] GetLandLotsbyPurpose(string purpose);
+        [OperationContract]
+        LandLotDTO[] GetLandLotsbySoil(string soil);
+        [OperationContract]
+        LandLotDTO[] GetLandLotsbyCadastralNumber(string cadastralNumber);
+        [OperationContract]
         PurposeDTO GetPurposeById(int id);
         [OperationContract]
         ExploitationTypeDTO GetExploitationTypeById(int id);

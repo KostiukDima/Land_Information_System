@@ -19,6 +19,36 @@
   <wsdl:message name="ILandService_EditLandLot_OutputMessage">
     <wsdl:part name="parameters" element="tns:EditLandLotResponse" />
   </wsdl:message>
+  <wsdl:message name="ILandService_GetLandLotsbyOwner_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandLotsbyOwner" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandLotsbyOwner_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandLotsbyOwnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandLotsbyOwnershipType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandLotsbyOwnershipType" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandLotsbyOwnershipType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandLotsbyOwnershipTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandLotsbyPurpose_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandLotsbyPurpose" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandLotsbyPurpose_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandLotsbyPurposeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandLotsbySoil_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandLotsbySoil" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandLotsbySoil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandLotsbySoilResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandLotsbyCadastralNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandLotsbyCadastralNumber" />
+  </wsdl:message>
+  <wsdl:message name="ILandService_GetLandLotsbyCadastralNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLandLotsbyCadastralNumberResponse" />
+  </wsdl:message>
   <wsdl:message name="ILandService_GetPurposeById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPurposeById" />
   </wsdl:message>
@@ -118,6 +148,26 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILandService/EditLandLot" message="tns:ILandService_EditLandLot_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILandService/EditLandLotResponse" message="tns:ILandService_EditLandLot_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetLandLotsbyOwner">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetLandLotsbyOwner" message="tns:ILandService_GetLandLotsbyOwner_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetLandLotsbyOwnerResponse" message="tns:ILandService_GetLandLotsbyOwner_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLandLotsbyOwnershipType">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetLandLotsbyOwnershipType" message="tns:ILandService_GetLandLotsbyOwnershipType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetLandLotsbyOwnershipTypeResponse" message="tns:ILandService_GetLandLotsbyOwnershipType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLandLotsbyPurpose">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetLandLotsbyPurpose" message="tns:ILandService_GetLandLotsbyPurpose_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetLandLotsbyPurposeResponse" message="tns:ILandService_GetLandLotsbyPurpose_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLandLotsbySoil">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetLandLotsbySoil" message="tns:ILandService_GetLandLotsbySoil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetLandLotsbySoilResponse" message="tns:ILandService_GetLandLotsbySoil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLandLotsbyCadastralNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetLandLotsbyCadastralNumber" message="tns:ILandService_GetLandLotsbyCadastralNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetLandLotsbyCadastralNumberResponse" message="tns:ILandService_GetLandLotsbyCadastralNumber_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetPurposeById">
       <wsdl:input wsaw:Action="http://tempuri.org/ILandService/GetPurposeById" message="tns:ILandService_GetPurposeById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILandService/GetPurposeByIdResponse" message="tns:ILandService_GetPurposeById_OutputMessage" />
@@ -192,6 +242,51 @@
     </wsdl:operation>
     <wsdl:operation name="EditLandLot">
       <soap:operation soapAction="http://tempuri.org/ILandService/EditLandLot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLandLotsbyOwner">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetLandLotsbyOwner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLandLotsbyOwnershipType">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetLandLotsbyOwnershipType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLandLotsbyPurpose">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetLandLotsbyPurpose" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLandLotsbySoil">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetLandLotsbySoil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLandLotsbyCadastralNumber">
+      <soap:operation soapAction="http://tempuri.org/ILandService/GetLandLotsbyCadastralNumber" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -80,13 +80,16 @@ namespace Service
             if (physicalIndividualDTOs != null)
             {
                 Owner owner = new Owner();
+                owner.JuridicalIndividualId = null;
 
                 foreach (var item in physicalIndividualDTOs)
                 {
-                    if (item.Id == -1)
-                        owner.PhysicalIndividuals.Add
-                            (new PhysicalIndividual()
-                            {
+                    PhysicalIndividual physicalIndividual = dal.GetPhysicalIndividual(item.Name, item.Surname, item.MiddleName, item.DateOfBirth);
+
+                    if ( null == physicalIndividual)
+                        owner.PhysicalIndividuals.Add       
+                            (new PhysicalIndividual()      
+                            {                              
                                 Name = item.Name,
                                 Surname = item.Surname,
                                 MiddleName = item.MiddleName,
@@ -94,19 +97,7 @@ namespace Service
                             }
                             );
                     else
-                        owner.PhysicalIndividuals.Add
-                        (new PhysicalIndividual()
-                        {
-                            Id = item.Id,
-                            Name = item.Name,
-                            Surname = item.Surname,
-                            MiddleName = item.MiddleName,
-                            DateOfBirth = item.DateOfBirth
-                        }
-                        );
-
-
-
+                        owner.PhysicalIndividuals.Add(physicalIndividual);
                 }
 
                 newLandLot.OwnerId = dal.AddOwner(owner);
@@ -114,6 +105,7 @@ namespace Service
             else
             {
                 Owner owner = new Owner();
+                owner.PhysicalIndividuals = null;
 
                 if (null == dal.GetJuridicalIndividual(juridicalIndividualDTO.Name,
                     juridicalIndividualDTO.EDRPOUcode))
@@ -127,7 +119,7 @@ namespace Service
                        (juridicalIndividualDTO.Name,
                            juridicalIndividualDTO.EDRPOUcode).Id;
 
-
+                
                 newLandLot.OwnerId = dal.AddOwner(owner);
             }
 
@@ -266,6 +258,179 @@ namespace Service
             return landLotDTOs.ToArray();
         }
 
+        public LandLotDTO[] GetLandLotsbyPurpose(string purpose)
+        {
+            List<LandLotDTO> landLotDTOs = new List<LandLotDTO>();
+
+            foreach (var item in dal.GetLandLots())
+            {
+                if (item.Purpose.Name == purpose || item.Purpose.Code == purpose || (item.Purpose.Code + " " + item.Purpose.Name) == purpose)
+                    landLotDTOs.Add
+                            (new LandLotDTO()
+                            {
+                                Id = item.Id,
+                                CadastralNumber = item.CadastralNumber,
+                                Area = item.Area,
+                                LandCategoryId = item.LandCategoryId,
+                                OwnershipTypeId = item.OwnershipTypeId,
+                                PurposeId = item.PurposeId,
+                                SoilId = item.SoilId,
+                                ExploitationTypeId = item.ExploitationTypeId,
+                                LocationId = item.LocationId,
+                                MonetaryValuationId = item.MonetaryValuationId,
+                                StateRegistrationInfoId = item.StateRegistrationInfoId
+                            });
+            }
+
+            if (landLotDTOs.Count == 0) return null;
+
+            return landLotDTOs.ToArray();
+        }
+
+        public LandLotDTO[] GetLandLotsbyOwnershipType(string ownershipType)
+        {
+            List<LandLotDTO> landLotDTOs = new List<LandLotDTO>();
+
+            foreach (var item in dal.GetLandLots())
+            {
+                if (item.OwnershipType.Name == ownershipType)
+                    landLotDTOs.Add
+                            (new LandLotDTO()
+                            {
+                                Id = item.Id,
+                                CadastralNumber = item.CadastralNumber,
+                                Area = item.Area,
+                                LandCategoryId = item.LandCategoryId,
+                                OwnershipTypeId = item.OwnershipTypeId,
+                                PurposeId = item.PurposeId,
+                                SoilId = item.SoilId,
+                                ExploitationTypeId = item.ExploitationTypeId,
+                                LocationId = item.LocationId,
+                                MonetaryValuationId = item.MonetaryValuationId,
+                                StateRegistrationInfoId = item.StateRegistrationInfoId
+                            });
+            }
+
+            if (landLotDTOs.Count == 0) return null;
+
+            return landLotDTOs.ToArray();
+        }
+
+        public LandLotDTO[] GetLandLotsbySoil(string soil)
+        {
+            List<LandLotDTO> landLotDTOs = new List<LandLotDTO>();
+
+            foreach (var item in dal.GetLandLots())
+            {
+                if (item.Soil.Name == soil || item.Soil.AgroGroupCode == soil || (item.Soil.AgroGroupCode + " " + item.Soil.Name) == soil)
+                    landLotDTOs.Add
+                            (new LandLotDTO()
+                            {
+                                Id = item.Id,
+                                CadastralNumber = item.CadastralNumber,
+                                Area = item.Area,
+                                LandCategoryId = item.LandCategoryId,
+                                OwnershipTypeId = item.OwnershipTypeId,
+                                PurposeId = item.PurposeId,
+                                SoilId = item.SoilId,
+                                ExploitationTypeId = item.ExploitationTypeId,
+                                LocationId = item.LocationId,
+                                MonetaryValuationId = item.MonetaryValuationId,
+                                StateRegistrationInfoId = item.StateRegistrationInfoId
+                            });
+            }
+
+            if (landLotDTOs.Count == 0) return null;
+
+            return landLotDTOs.ToArray();
+        }
+
+        public LandLotDTO[] GetLandLotsbyOwner(string owner)
+        {
+            List<LandLotDTO> landLotDTOs = new List<LandLotDTO>();
+
+            foreach (var item in dal.GetLandLots())
+            {
+                if (item.Owner.JuridicalIndividualId != null)
+                {
+                    if (item.Owner.JuridicalIndividual.Name == owner
+                         || item.Owner.JuridicalIndividual.EDRPOUcode == owner
+                         || (item.Owner.JuridicalIndividual.Name + " " + item.Owner.JuridicalIndividual.EDRPOUcode) == owner)
+                        landLotDTOs.Add
+                                (new LandLotDTO()
+                                {
+                                    Id = item.Id,
+                                    CadastralNumber = item.CadastralNumber,
+                                    Area = item.Area,
+                                    LandCategoryId = item.LandCategoryId,
+                                    OwnershipTypeId = item.OwnershipTypeId,
+                                    PurposeId = item.PurposeId,
+                                    SoilId = item.SoilId,
+                                    ExploitationTypeId = item.ExploitationTypeId,
+                                    LocationId = item.LocationId,
+                                    MonetaryValuationId = item.MonetaryValuationId,
+                                    StateRegistrationInfoId = item.StateRegistrationInfoId
+                                });
+                }
+                else if (item.Owner.PhysicalIndividuals != null)
+                {
+                    foreach (var i in item.Owner.PhysicalIndividuals)
+                    {
+                        if (i.Surname + " " + i.Name + " " + i.MiddleName + " " + i.DateOfBirth.ToShortDateString() == owner)
+                            landLotDTOs.Add
+                                  (new LandLotDTO()
+                                  {
+                                      Id = item.Id,
+                                      CadastralNumber = item.CadastralNumber,
+                                      Area = item.Area,
+                                      LandCategoryId = item.LandCategoryId,
+                                      OwnershipTypeId = item.OwnershipTypeId,
+                                      PurposeId = item.PurposeId,
+                                      SoilId = item.SoilId,
+                                      ExploitationTypeId = item.ExploitationTypeId,
+                                      LocationId = item.LocationId,
+                                      MonetaryValuationId = item.MonetaryValuationId,
+                                      StateRegistrationInfoId = item.StateRegistrationInfoId
+                                  });
+                    }
+
+                }
+            }
+
+            if (landLotDTOs.Count == 0) return null;
+
+            return landLotDTOs.ToArray();
+        }
+
+        public LandLotDTO[] GetLandLotsbyCadastralNumber(string cadastralNumber)
+        {
+            List<LandLotDTO> landLotDTOs = new List<LandLotDTO>();
+
+            foreach (var item in dal.GetLandLots())
+            {
+                if (item.CadastralNumber == cadastralNumber)
+                    landLotDTOs.Add
+                            (new LandLotDTO()
+                            {
+                                Id = item.Id,
+                                CadastralNumber = item.CadastralNumber,
+                                Area = item.Area,
+                                LandCategoryId = item.LandCategoryId,
+                                OwnershipTypeId = item.OwnershipTypeId,
+                                PurposeId = item.PurposeId,
+                                SoilId = item.SoilId,
+                                ExploitationTypeId = item.ExploitationTypeId,
+                                LocationId = item.LocationId,
+                                MonetaryValuationId = item.MonetaryValuationId,
+                                StateRegistrationInfoId = item.StateRegistrationInfoId
+                            });
+            }
+
+            if (landLotDTOs.Count == 0) return null;
+
+            return landLotDTOs.ToArray();
+        }
+
         public LandCategoryDTO GetLandCategoryById(int id)
         {
             LandCategory landCategory = dal.GetLandCategories().FirstOrDefault(l => l.Id == id);
@@ -364,7 +529,6 @@ namespace Service
             return physicalIndividualDTOs.ToArray();
         }
 
-
         public LocationDTO GetLocationById(int id)
         {
             Location location = dal.GetLocationById(id);
@@ -381,10 +545,9 @@ namespace Service
             };
         }
 
-
         public string GetOwnerType(int id)
         {
-            LandLot landLot   = dal.GetLandLots().FirstOrDefault(l=>l.Id == id);
+            LandLot landLot = dal.GetLandLots().FirstOrDefault(l => l.Id == id);
 
             if (landLot == null) return null;
 
@@ -448,7 +611,7 @@ namespace Service
             landLot.StateRegistrationInfo.RegistrationAgency = stateRegistrationInfoDTO.RegistrationAgency;
             landLot.StateRegistrationInfo.TechnicalDocumentation = stateRegistrationInfoDTO.TechnicalDocumentation;
             landLot.StateRegistrationInfo.DateTime = stateRegistrationInfoDTO.DateTime;
-            
+
 
             if (dal.GetExploitationTypeByName(exploitationTypeDTO.Name) == null)
                 dal.AddExploitationType(new ExploitationType() { Name = exploitationTypeDTO.Name });

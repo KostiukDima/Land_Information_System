@@ -78,6 +78,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="JuridicalIndividualDTO" nillable="true" type="tns:JuridicalIndividualDTO" />
+  <xs:complexType name="ArrayOfLandLotDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LandLotDTO" nillable="true" type="tns:LandLotDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLandLotDTO" nillable="true" type="tns:ArrayOfLandLotDTO" />
   <xs:complexType name="PurposeDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
@@ -103,12 +109,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="LandCategoryDTO" nillable="true" type="tns:LandCategoryDTO" />
-  <xs:complexType name="ArrayOfLandLotDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="LandLotDTO" nillable="true" type="tns:LandLotDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfLandLotDTO" nillable="true" type="tns:ArrayOfLandLotDTO" />
   <xs:complexType name="ArrayOfLandCategoryDTO">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="LandCategoryDTO" nillable="true" type="tns:LandCategoryDTO" />

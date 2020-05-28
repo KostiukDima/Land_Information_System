@@ -75,7 +75,7 @@ namespace UI
             GridAddComBoxPurpose.SelectedItem = null;
             GridAddExploitationType.Text =null;
             GridAddComBoxSoils.SelectedItem = null;
-
+            GridAddComBoxOwnershipType.SelectedItem = null;
             
             GridAddLocationRegion.Text = "";
             GridAddLocationDistrict.Text = "";
@@ -272,17 +272,17 @@ namespace UI
         {
             LandLotDTO[] landLotDTOs = null;
             if (GridFindRadioBtnCadasNum.IsChecked == true)
-            { }
+                landLotDTOs = proxy.GetLandLotsbyCadastralNumber(TextFind.Text);
             else if (GridFindRadioBtnOwner.IsChecked == true)
-            { }
+                landLotDTOs = proxy.GetLandLotsbyOwner(TextFind.Text);
             else if (GridFindRadioBtnLandCatrgory.IsChecked == true)
                 landLotDTOs = proxy.GetLandLotsbyLandCategory(TextFind.Text);
             else if (GridFindRadioBtnPurpose.IsChecked == true)
-            { }
+                landLotDTOs = proxy.GetLandLotsbyPurpose(TextFind.Text);
             else if (GridFindRadioBtnSoil.IsChecked == true)
-            { }
+                landLotDTOs = proxy.GetLandLotsbySoil(TextFind.Text);
             else if (GridFindRadioBtnOwnershipType.IsChecked == true)
-            { }
+                landLotDTOs = proxy.GetLandLotsbyOwnershipType(TextFind.Text);
 
             ListBoxFindLand.Items.Clear();
 
@@ -391,10 +391,10 @@ namespace UI
                 {
                     GridInfoListBox.Items.Add
                         (
-                        "Прізвище: "+i.Surname + " I'мя: " +
-                        i.Name + " По батькові: " +
-                        i.MiddleName + " Дата народження: " +
-                        i.DateOfBirth.ToShortDateString() + " Тип власності: " +
+                        "Прізвище: "+i.Surname + "   I'мя: " +
+                        i.Name + "   По батькові: " +
+                        i.MiddleName + "   Дата народження: " +
+                        i.DateOfBirth.ToShortDateString() + "   Тип власності: " +
                         ownershipType.Name);
 
                 }
@@ -591,6 +591,16 @@ namespace UI
                   juridicalIndividualDTO
               );
             }
+        }
+
+        private void GridInfoBtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GridInfoBtnDelete_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
